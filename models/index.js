@@ -1,3 +1,6 @@
+// SEQUELIZE AUTO-GENERATES THIS FILE TO AUTO-COLLECT ALL MODELS IN models FOLDER.
+// DO NOT CHANGE ANY CODE IN THIS FILE
+
 "use strict";
 
 var fs = require("fs");
