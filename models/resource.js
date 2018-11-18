@@ -6,17 +6,30 @@
 // Full Stack Developer Bootcamp (July 2018)
 // ====================================================
 // RESOURCE.JS - Model for Resource (owned by single Topic)
-// Sequelize uses to create "resources" (pluralized) table
+// Sequelize uses to create "Resources" (pluralized) table
 // ====================================================
 
-// SAMPLE
-// module.exports = function(sequelize, DataTypes) {
-//   var Example = sequelize.define("Example", {
-//     text: DataTypes.STRING,
-//     description: DataTypes.TEXT
-//   });
-//   return Example;
-// };
 
-// Resource model:
-// resource.js (resource_title(STRING), resource_content(TEXT)) -- Resource.belongsTo(models.Topic, {})
+module.exports = function(sequelize, DataTypes) {
+  var Resource = sequelize.define("Resource", {
+    resourceName: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    resourceContent: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    }
+  });
+
+  Resource.associate = function(models) {
+    Resource.belongsTo(models.Topic, {
+      onDelete: "CASCADE",
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
+
+  return Resource;
+};
