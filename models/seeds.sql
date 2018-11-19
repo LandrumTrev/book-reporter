@@ -5,19 +5,12 @@
 -- University of Richmond (Virginia)
 -- Full Stack Developer Bootcamp (July 2018)
 -- ====================================================
--- SCHEMA.SQL - CREATE LOCAL DEVELOPMENT DATABASE
+-- SEEDS.SQL - SAMPLE DATA TO INSERT IN DATABASE
 -- ====================================================
 
+-- PUT YOUR SAMPLE DATA HERE FOR User, Project, Topic, Resource models
+-- use Terminal or MySQL Workbench to put these in manually, 
+-- unless you know how to do it in Sequelize (if so, tell us how to do that!)
 
--- DROP DATABASE IF EXISTS exampledb;
--- CREATE DATABASE exampledb;
+-- INSERT INTO tableName (colName) VALUES ('data to insert');
 
--- DROP DATABASE IF EXISTS testdb;
--- CREATE DATABASE testdb;
-
-
-DROP DATABASE IF EXISTS bookreporter_db;
-CREATE DATABASE bookreporter_db;
-
-DROP DATABASE IF EXISTS bookreporter_test;
-CREATE DATABASE bookreporter_test;
