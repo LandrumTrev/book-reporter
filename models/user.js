@@ -6,17 +6,16 @@
 // Full Stack Developer Bootcamp (July 2018)
 // ====================================================
 // USER.JS - Model for User (owns many Projects)
-// Sequelize uses to create "users" (pluralized) table
+// Sequelize uses to create "Users" (pluralized) table
 // ====================================================
 
-// SAMPLE
-// module.exports = function(sequelize, DataTypes) {
-//   var Example = sequelize.define("Example", {
-//     text: DataTypes.STRING,
-//     description: DataTypes.TEXT
-//   });
-//   return Example;
-// };
+module.exports = function(sequelize, DataTypes) {
+  var User = sequelize.define("User", {
+    userName: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
+  });
 
-// User model:
-// user.js (name (STRING) -- User.hasMany(models.Project, {})
+  return User;
+};

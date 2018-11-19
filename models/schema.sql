@@ -15,6 +15,7 @@
 -- DROP DATABASE IF EXISTS testdb;
 -- CREATE DATABASE testdb;
 
+-- USE bookreporter_db;
 
 DROP DATABASE IF EXISTS bookreporter_db;
 CREATE DATABASE bookreporter_db;
