@@ -1,3 +1,60 @@
 .list-group-item {
-  line-height: 2.5;
+   line-height: 2.5;
 }
+
+body {
+   background-color: aliceblue;
+}
+
+/* PRE-EXISTING STYLES ABOVE (remove/change/keep/whatevs) */
+/* =================== */
+/* NEW STYLES BELOW */
+
+
+
+
+/* NEW STYLES ABOVE */
+/* =================== */
+/* MEDIA QUERIES BELOW */
+
+/* MEDIA QUERIES FOR BREAKPOINTS BELOW */
+/* =================================== */
+
+/* Extra small devices (phones, 575px and down) */
+@media only screen and (max-width: 575px) {
+
+   body {
+      background-color: #fff;
+   }
+
+}
+
+/* Small devices (portrait tablets and large phones, 576px and up) */
+@media only screen and (min-width: 576px) {
+
+   body {
+      background-color: aliceblue;
+   }
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+   body {
+      background-color: #fff;
+   }
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+   body {
+      background-color: aliceblue;
+   }
+
+}
+
+/* MEDIA QUERIES FOR BREAKPOINTS ABOVE */
+/* =================================== */
