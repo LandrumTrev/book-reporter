@@ -14,20 +14,24 @@
 
 -- INSERT INTO tableName (colName) VALUES ('data to insert');
 
+-- ====================================================
+
 INSERT INTO bookreporter_db.Users (userName, createdAt, updatedAt) VALUES ('Mark Twain', NOW(), NOW());
-DELETE FROM bookreporter_db.Users WHERE id=1;
 
 INSERT INTO bookreporter_db.Projects (projectName, createdAt, updatedAt, UserId) VALUES ('Autobiography', NOW(), NOW(), 1);
-DELETE FROM bookreporter_db.Projects WHERE id=1;
 
 INSERT INTO bookreporter_db.Topics (topicName, createdAt, updatedAt, ProjectId) VALUES ('Childhood', NOW(), NOW(), 1);
-DELETE FROM bookreporter_db.Topics WHERE id=1;
 
 INSERT INTO bookreporter_db.Resources (resourceName, resourceContent, createdAt, updatedAt, TopicId) VALUES ('Baptism', "", NOW(), NOW(), 1);
-DELETE FROM bookreporter_db.Resources WHERE id=1;
 
 INSERT INTO bookreporter_db.Resources (resourceName, resourceContent, createdAt, updatedAt, TopicId) VALUES ('1st Grade', "Mrs. Snookypearl", NOW(), NOW(), 1);
-DELETE FROM bookreporter_db.Resources WHERE id=2;
+
+-- ====================================================
+
+DELETE FROM bookreporter_db.Users WHERE id=1;
+DELETE FROM bookreporter_db.Projects WHERE id=1;
+DELETE FROM bookreporter_db.Topics WHERE id=1;
+DELETE FROM bookreporter_db.Resources WHERE id=1;
 
 -- ====================================================
 
