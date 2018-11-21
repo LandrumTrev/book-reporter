@@ -8,3 +8,36 @@
 {{!-- myprojects.handlebars --}}
 {{!-- htmlRoutes.js renders a Handlebars view of all the logged in user's projects --}}
 {{!-- ==================================================== --}}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="title text-center">My Projects</h1>
+        </div>
+    </div>
+    <div class="row myProjects p-5">
+        <div class="col-md-12">
+            <div class="message text-center mx-auto">
+                <h4>You have no submitted projects yet</h4>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Start a New Project</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <form>
+                <div class="form-group">
+                    <label for="projectType">What kind of project are you working on?</label>
+                    <select class="form-control" id="projectType">
+                        <option>Book Report</option>
+                        <option>Web Application</option>
+                    </select>
+                </div>
+                <input type="submit" class="btn btn-primary btn-lg text-center" id="sign-in">
+            </form>
+        </div>
+    </div>
+</div>

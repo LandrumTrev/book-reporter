@@ -1,8 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "root",
-    // "database": "exampledb",
+    "password": "Yankees02",
     "database": "bookreporter_db",
     "host": "localhost",
     "dialect": "mysql"
@@ -10,8 +9,7 @@
   "test": {
     "username": "root",
     "password": "root",
-    // "database": "testdb",
-    "database": "bookreporter_test",
+    "database": "testdb",
     "host": "localhost",
     "dialect": "mysql",
     "logging": false

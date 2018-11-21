@@ -29,25 +29,22 @@ var db = require("../models");
 
 // ROUTES FOR EXAMPLE SITE: COMMENT OUT OR DELETE THESE
 module.exports = function(app) {
-  // Load index page
+  // Load sign in page
   app.get("/", function(req, res) {
     db.Example.findAll({}).then(function(dbExamples) {
-      res.render("index", {
+      res.render("signin", {
         msg: "Welcome!",
         examples: dbExamples
       });
     });
   });
 
-  // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
-    db.Example.findOne({
-      where: {
-        id: req.params.id
-      }
-    }).then(function(dbExample) {
-      res.render("example", {
-        example: dbExample
+  // Load page with user's projects
+  app.get("/:user", function(req, res) {
+    db.Example.findAll({}).then(function(dbExamples) {
+      res.render("myprojects", {
+        msg: "Welcome!",
+        examples: dbExamples
       });
     });
   });
