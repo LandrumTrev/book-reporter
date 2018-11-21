@@ -6,17 +6,25 @@
 // Full Stack Developer Bootcamp (July 2018)
 // ====================================================
 // TOPIC.JS - Model for Topic (owned by single Project, owns many Resources)
-// Sequelize uses to create "topics" (pluralized) table
+// Sequelize uses to create "Topics" (pluralized) table
 // ====================================================
 
-// SAMPLE
-// module.exports = function(sequelize, DataTypes) {
-//   var Example = sequelize.define("Example", {
-//     text: DataTypes.STRING,
-//     description: DataTypes.TEXT
-//   });
-//   return Example;
-// };
+module.exports = function(sequelize, DataTypes) {
+  var Topic = sequelize.define("Topic", {
+    topicName: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
+  });
 
-// Topic model:
-// topic.js (topic_title(STRING)) -- Topic.hasMany(models.Resource, {}), Topic.belongsTo(models.Project, {})
+  Topic.associate = function(models) {
+    Topic.belongsTo(models.Project, {
+      onDelete: "CASCADE",
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
+
+  return Topic;
+};

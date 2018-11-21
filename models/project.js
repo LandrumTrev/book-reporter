@@ -6,17 +6,29 @@
 // Full Stack Developer Bootcamp (July 2018)
 // ====================================================
 // PROJECT.JS - Model for Project (owned by single User, owns many Topics)
-// Sequelize uses to create "projects" (pluralized) table
+// Sequelize uses to create "Projects" (pluralized) table
 // ====================================================
 
-// SAMPLE
-// module.exports = function(sequelize, DataTypes) {
-//   var Example = sequelize.define("Example", {
-//     text: DataTypes.STRING,
-//     description: DataTypes.TEXT
-//   });
-//   return Example;
-// };
+module.exports = function(sequelize, DataTypes) {
+  var Project = sequelize.define("Project", {
+    projectName: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    projectContent: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    }
+  });
 
-// Project model:
-// project.js (project_name(STRING), project_content(TEXT)) -- User.hasMany(models.Project, {}), User.belongsTo(models.User, {})
+  Project.associate = function(models) {
+    Project.belongsTo(models.User, {
+      onDelete: "CASCADE",
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
+
+  return Project;
+};
