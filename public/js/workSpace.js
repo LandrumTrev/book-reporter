@@ -13,8 +13,10 @@
 
 // GET all topics for project
 // GET all resources for each topic
+
 // POST new topic for project
 // POST new resource for each topic
+
 // PUT change name of a topic
 // PUT change project assignment of topic (?)
 // PUT change name of a resource
@@ -25,6 +27,7 @@
 
 // start jQuery wrapper function
 $(function() {
+
   // pass variable for userId from signin page
   var userId = 1;
   // pass variable for projectId from myProjects page
@@ -65,16 +68,23 @@ $(function() {
 
           // and for each Resource returned for that Topic,
           for (let j = 0; j < resources.length; j++) {
-            console.log(resources[j]);
+            // console.log(resources[j]);
+            var resourceContent = resources[j].resourceContent;
             var resourceName = resources[j].resourceName;
             var resourceId = resources[j].id;
             var resourceTopic = resources[j].TopicId;
-            console.log(resourceName + " - id: " + resourceId);
+            // console.log(resourceName + " - id: " + resourceId);
+            // console.log("content: " + resourceContent);
 
-            // create a Resource list item with id="resource1"
+            // create a Resource Name list item with id="resource1"
             var resourceItem = $("<div id='resource" + resourceId + "' class='list-group-item list-group-item-action'></div>");
             // and .append to it an h6 to display the resourceName
-            resourceItem.append("<h6 class='mb-0'>" + resourceName + "</h6>");
+            resourceItem.append("<h6 class='resname mb-0'>" + resourceName + "</h6>");
+
+            // create a Resource Content list item with id="resourceContent1"
+            var resourceContent = $("<p class='rescont mb-0'>" + resourceContent + "</p>");
+            // and append the ResourceContent to the resourceItem
+            $(resourceItem).append(resourceContent);
 
             // and append the Resource list item to the resourceGroup container for that Topic
             $("#topic" + resourceTopic).append(resourceItem);
@@ -85,6 +95,16 @@ $(function() {
       } // end Topic FOR LOOP
     }); // end Topics AJAX
   }); // end #topics_button event handler
+
+
+
+
+
+
+
+
+
+
 
   // SAMPLES BELOW: NOT FOR BOOK-REPORTER
   // ========================================================

@@ -34,7 +34,6 @@ module.exports = function(app) {
     });
   });
 
-
   // Get all Resources of a Topic (of a Project of a User)
   app.get("/api/:user/:project/:topic/resources", function(req, res) {
     db.Resource.findAll({ where: { TopicId: req.params.topic } }).then(function(dbResources) {
@@ -43,11 +42,6 @@ module.exports = function(app) {
       res.json(dbResources);
     });
   });
-
-
-
-
-
 
 
 
@@ -69,9 +63,7 @@ module.exports = function(app) {
 
   // Delete an example by id
   app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(
-      dbExample
-    ) {
+    db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
       res.json(dbExample);
     });
   });
