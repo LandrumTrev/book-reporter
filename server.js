@@ -1,3 +1,13 @@
+// ====================================================
+// BookReporter :: A research project note organizer and composer
+// MVC with MySQL, Node, Express, Handlebars and Sequelize.
+// ©2018 Nicholas Angelo Batten, Ryan Case, Melissa Derricott, Alex Silvester, Richard Trevillian
+// University of Richmond (Virginia)
+// Full Stack Developer Bootcamp (July 2018)
+// ====================================================
+// server.js - settings for the Express web server
+// ====================================================
+
 require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
@@ -22,10 +32,13 @@ app.engine(
 app.set("view engine", "handlebars");
 
 // Routes
+// update to include individual page ______apiRoutes.js
+require("./routes/workspaceApiRoutes")(app);
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
 var syncOptions = { force: false };
+// var syncOptions = { force: true };
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`

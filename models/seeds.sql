@@ -38,4 +38,8 @@ DELETE FROM bookreporter_db.Resources WHERE id=1;
 INSERT INTO bookreporter_db.Projects (projectName, createdAt, updatedAt, UserId) VALUES ('Fun Stuff', NOW(), NOW(), 1);
 DELETE FROM bookreporter_db.Projects WHERE id=2;
 
+<<<<<<< HEAD
 -- ====================================================
+=======
+-- ====================================================
+>>>>>>> 15cdb58d42baa5bf8fb6ca7883b75ef37642d63c

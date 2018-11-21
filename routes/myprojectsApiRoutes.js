@@ -5,21 +5,10 @@
 // University of Richmond (Virginia)
 // Full Stack Developer Bootcamp (July 2018)
 // ====================================================
-// USER.JS - Model for User (owns many Projects)
-// Sequelize uses to create "Users" (pluralized) table
+// myprojectsApiRoutes.js
+// (apiRoutes for myprojects.handlebars, called by myprojects.js event handlers)
 // ====================================================
 
-module.exports = function(sequelize, DataTypes) {
-  var User = sequelize.define("User", {
-    userName: {
-      type: DataTypes.STRING,
-      allowNull: false
-    }
-  });
 
-  return User;
-<<<<<<< HEAD
-};
-=======
-};
->>>>>>> 15cdb58d42baa5bf8fb6ca7883b75ef37642d63c
+// GET all user's projects
+// POST a new project for user

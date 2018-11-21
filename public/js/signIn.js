@@ -5,21 +5,11 @@
 // University of Richmond (Virginia)
 // Full Stack Developer Bootcamp (July 2018)
 // ====================================================
-// USER.JS - Model for User (owns many Projects)
-// Sequelize uses to create "Users" (pluralized) table
+// signIn.js
+// DOM event handlers for signin.handlebars page view
 // ====================================================
 
-module.exports = function(sequelize, DataTypes) {
-  var User = sequelize.define("User", {
-    userName: {
-      type: DataTypes.STRING,
-      allowNull: false
-    }
-  });
+// GET all users (compare with entered user name; if match, load user's projects page)
+// ($.get() to signinApiRoutes.js)
+// POST new user ($.post() to signinApiRoutes.js)
 
-  return User;
-<<<<<<< HEAD
-};
-=======
-};
->>>>>>> 15cdb58d42baa5bf8fb6ca7883b75ef37642d63c
