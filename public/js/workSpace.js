@@ -34,11 +34,12 @@ $(document).ready(function () {
   var projectId = 1;
 
   // on page load, get all Topics and Resources for the Project
+  // get these variables (demo values above) from Local Storage (Melissa)
   getTopicsAndResources(userId, projectId);
 
   // ==========================================================
 
-  // call workspaceApiRoutes.js to get all Topics and Resources
+  // make a call to workspaceApiRoutes.js to get all Topics and Resources
   function getTopicsAndResources(uID, pID) {
 
     // pass in the current userId and projectId to the API route to get Topics
@@ -47,17 +48,21 @@ $(document).ready(function () {
       // FOR each Topic returned in (topics),
       for (let i = 0; i < topics.length; i++) {
 
+        // variable to stand for the name of the looped Topic
         var topicName = topics[i].topicName;
+        // variable to stand for the database id of the looped Topic
         var tID = topics[i].id;
+        // console (browser) the topicName and tID values
         // console.log(topicName + " - id: " + tID);
 
-        // create a Topic list item id="topic1"
+        // define a Topic list DOM element item id="topic1"
         var topicLI = $("<a id='topic" + tID + "' href='#' class='list-group-item list-group-item-action'></a>");
         // and .append to it an h5 to display the topicName
         topicLI.append("<h5 class='mb-0'>" + topicName + "</h5>");
-        // and create a <div> to hold all that Topics Resources
+
+        // and create a <div> to hold that Topic's Resources
         var resourceGroup = $("<div id='topic" + tID + "resources' class='list-group'></div>");
-        // and .append that Resource container <div> to the Topic list item
+        // and .append that Resource container <div> to the topicLI Topic list item as well
         topicLI.append(resourceGroup);
 
         // ==========================================================
@@ -74,16 +79,22 @@ $(document).ready(function () {
             var resourceTopic = resources[j].TopicId;
 
             // console.log(resources[j]);
-            // console.log(resourceName + " - id: " + resourceId);
+            // console.log(resourceName + " - Resource id: " + resourceId + ", Topic Id: " + resourceTopic);
             // console.log("content: " + resourceContent);
 
-            // create a Resource Name list item with id="resource1"
-            var resourceItem = $("<div id='resource" + resourceId + "' class='list-group-item list-group-item-action'></div>");
+            // create a Resource Name list item container with id="resource1"
+            var resourceItem = $("<div id='resource" + resourceId + "' class='resname list-group-item list-group-item-action'></div>");
             // and .append to it an h6 to display the resourceName
             resourceItem.append("<h6 class='resname mb-0'>" + resourceName + "</h6>");
 
+            // $(".resname").click(function () {
+            //   console.log("I got clicked!");
+            //   $("#resourceContent" + resourceId).toggle();
+            // });         
+
             // create a Resource Content copy list item with id="resourceContent1"
-            var resourceContent = $("<p class='rescont mb-0'>" + resourceContent + "</p>");
+            // var resourceContent = $("<p id='resourceContent" + resourceId + "' class='rescont mb-0' style='display: none'>" + resourceContent + "</p>");
+            var resourceContent = $("<p id='resourceContent" + resourceId + "' class='rescont mb-0'>" + resourceContent + "</p>");
             // and append the ResourceContent to the resourceItem headline
             $(resourceItem).append(resourceContent);
 
@@ -98,28 +109,54 @@ $(document).ready(function () {
   } // end getTopicsAndResources
 
   // ========================================================
+
+
+  // event handler for the "Add Topic" button and input field, calls addTopic() function
+  $(document).on("click", "#add-topic-button", addTopic);
+
+
+  // function called by event handler for the "Add Topic" button and input field
+  function addTopic() {
+    var newTopic = $("#add-topic-name").val().trim();
+    console.log(newTopic);
+
+    // POST a call to workspaceApiRoutes /api/:user/:project/newtopic
+    $.post("/api/" + userId + "/" + projectId + "/" + newTopic, function (newTopic) {
+      // reload the page to re-run getTopicsAndResources() to show the new Topic
+      location.reload(true);
+    });
+  };
+
+
+  // ========================================================
+
+
+
+  
+
+  // ========================================================
 }); // end jQuery wrapper function
 
 
-$(document).on("click", ".todo-item", editTodo);
+// $(document).on("click", ".todo-item", editTodo);
 
 
-  // This function handles showing the input box for a user to edit a todo
-  function editTodo() {
-    var currentTodo = $(this).data("todo");
-    $(this)
-      .children()
-      .hide();
-    $(this)
-      .children("input.edit")
-      .val(currentTodo.text);
-    $(this)
-      .children("input.edit")
-      .show();
-    $(this)
-      .children("input.edit")
-      .focus();
-  }
+// // This function handles showing the input box for a user to edit a todo
+// function editTodo() {
+//   var currentTodo = $(this).data("todo");
+//   $(this)
+//     .children()
+//     .hide();
+//   $(this)
+//     .children("input.edit")
+//     .val(currentTodo.text);
+//   $(this)
+//     .children("input.edit")
+//     .show();
+//   $(this)
+//     .children("input.edit")
+//     .focus();
+// }
 
 
 
