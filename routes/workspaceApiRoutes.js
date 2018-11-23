@@ -9,17 +9,21 @@
 // (apiRoutes for workspace.handlebars, called by workspace.js event handlers)
 // ====================================================
 
-// GET all topics for project
-// GET all resources for each topic
+// GET all topics for project - DONE
+// GET all resources for each topic - DONE
 
-// POST new topic for project
-// POST new resource name and resource content for each topic
+// POST new topic for project - DONE
+// POST new resource name for each topic - DONE
 
 // PUT change name of a topic
 // PUT change project assignment of topic (?)
 // PUT change name of a resource
 // PUT change content of a resource
 // PUT change topic assignment of a resource (?)
+
+// DELETE a topic from project
+// DELETE a resource from topic
+
 
 var db = require("../models");
 
@@ -113,6 +117,26 @@ module.exports = function (app) {
   // ========================================================
 
 
+  // DELETE ROUTES
+  // ========================================================
+
+  // // Delete an example by id
+  // app.delete("/api/examples/:id", function (req, res) {
+  //   db.Example.destroy({
+  //     where: {
+  //       id: req.params.id
+  //     }
+  //   }).then(function (dbExample) {
+  //     res.json(dbExample);
+  //   });
+  // });
+
+
+  // ========================================================
+  // ========================================================
+  // ========================================================
+
+
 
   // UPDATE ROUTES
   // ========================================================
@@ -128,28 +152,33 @@ module.exports = function (app) {
 
   //SAMPLE ROUTES BELOW:
   // ====================================================
-  // Get all examples
-  app.get("/api/examples", function (req, res) {
-    db.Example.findAll({}).then(function (dbExamples) {
-      res.json(dbExamples);
-    });
-  });
 
-  // Create a new example
-  app.post("/api/examples", function (req, res) {
-    db.Example.create(req.body).then(function (dbExample) {
-      res.json(dbExample);
-    });
-  });
+  // // Get all examples
+  // app.get("/api/examples", function (req, res) {
+  //   db.Example.findAll({}).then(function (dbExamples) {
+  //     res.json(dbExamples);
+  //   });
+  // });
 
-  // Delete an example by id
-  app.delete("/api/examples/:id", function (req, res) {
-    db.Example.destroy({
-      where: {
-        id: req.params.id
-      }
-    }).then(function (dbExample) {
-      res.json(dbExample);
-    });
-  });
+
+  // // Create a new example
+  // app.post("/api/examples", function (req, res) {
+  //   db.Example.create(req.body).then(function (dbExample) {
+  //     res.json(dbExample);
+  //   });
+  // });
+
+
+  // // Delete an example by id
+  // app.delete("/api/examples/:id", function (req, res) {
+  //   db.Example.destroy({
+  //     where: {
+  //       id: req.params.id
+  //     }
+  //   }).then(function (dbExample) {
+  //     res.json(dbExample);
+  //   });
+  // });
+
+
 };

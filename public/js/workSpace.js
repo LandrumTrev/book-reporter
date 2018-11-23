@@ -15,7 +15,7 @@
 // GET all resources for each topic - DONE
 
 // POST new topic for project - DONE
-// POST new resource for each topic
+// POST new resource name for each topic - DONE
 
 // PUT change name of a topic
 // PUT change project assignment of topic (?)
@@ -23,7 +23,9 @@
 // PUT change content of a resource
 // PUT change topic assignment of a resource (?)
 
-// console.log("workSpace.js online");
+// DELETE a topic from project
+// DELETE a resource from topic
+
 
 // start jQuery wrapper function
 $(document).ready(function () {
@@ -57,14 +59,21 @@ $(document).ready(function () {
 
         // define a Topic list DOM element item id="topic1"
         var topicLI = $("<div id='topic" + tID + "' class='list-group-item list-group-item-action'></div>");
+
+        // var deleteTopicButton = $("<button type='button' class='delete-topic btn btn-outline-danger btn-sm p-0 mb-2 float-right' style='width:25px;height:25px;'>x</button>");
+        // delete resource button (burn icon)
+        var deleteTopicButton = $("<i class='delete-topic fas fa-burn p-0 mb-0 mr-2 float-left'></i>");
+        topicLI.append(deleteTopicButton);
+
         // and .append to it an h5 to display the topicName
-        topicLI.append("<h5 class='mb-0'>" + topicName + "</h5>");
+        topicLI.append("<h5 class='p-0 mb-2 float-left'>" + topicName + "</h5>");
 
         // create an "Add Resource" input and button at the top of every Topic list of Resources
         var newResourceInput = $("<div class='input-group mb-3'><div class='input-group-prepend'><button class='btn btn-outline-secondary' type='button' id='add-resource-button-" + tID + "' data-topic='" + tID + "'>Add Resource</button></div><input id='add-resource-name-" + tID + "' type='text' class='form-control' placeholder='add a new Resource to this Topic'></div>")
         // append the "Add Resource" input below the Topic Name and above the Resource list
         topicLI.append(newResourceInput);
 
+        // ==========================================================
 
         // event handler for the "Add Resource" button and input field, calls addResource() function
         $(document).on("click", "#add-resource-button-" + tID, function () {
@@ -82,8 +91,25 @@ $(document).ready(function () {
           });
         });
 
+        // ==========================================================
 
+        // event handler for the "Add Resource" button and input field, calls addResource() function
+        $(document).on("click", "#add-resource-button-" + tID, function () {
 
+          var thisTopic = ($(this).attr('data-topic'));
+          // console.log(thisTopic);
+
+          var newResource = $("#add-resource-name-" + thisTopic).val().trim();
+          console.log(newResource);
+
+          // POST a call to workspaceApiRoutes /api/:user/:project/:topic/newresource
+          $.post("/api/resources/" + userId + "/" + projectId + "/" + thisTopic + "/" + newResource, function (newTopic) {
+            // reload the page to re-run getTopicsAndResources() to show the new Resource
+            location.reload(true);
+          });
+        });
+
+        // ==========================================================
         // and create a <div> to hold that Topic's Resources
         var resourceGroup = $("<div id='topic" + tID + "resources' class='list-group'></div>");
         // and .append that Resource container <div> to the topicLI Topic list item as well
@@ -108,8 +134,16 @@ $(document).ready(function () {
 
             // create a Resource Name list item container with id="resource1"
             var resourceItem = $("<div id='resource" + resourceId + "' class='resname list-group-item list-group-item-action'></div>");
-            // and .append to it an h6 to display the resourceName
-            resourceItem.append("<h6 class='resname mb-0'>" + resourceName + "</h6>");
+
+            // delete resource button (burn icon)
+            var deleteResourceButton = $("<i class='delete-resource fas fa-burn p-0 mb-0 mr-2 float-left'></i>");
+            // append to the resourceItem container DIV before Resource Name
+            resourceItem.append(deleteResourceButton);
+
+            // Resource Headline displays the resourceName
+            var resourceHeadline = $("<h6 class='resname p-0 mb-1'>" + resourceName + "</h6>");
+            // append it to the resourceItem container DIV after delete (burn) icon
+            resourceItem.append(resourceHeadline);
 
             // $(".resname").click(function () {
             //   console.log("I got clicked!");

@@ -20,6 +20,19 @@ body {
   line-height: 1.1rem;
 }
 
+.delete-resource {
+  position: relative;
+  top: 7px;
+  color: blue;
+}
+
+.delete-topic {
+  position: relative;
+  top: 5px;
+  color: red;
+}
+
+
 /* NEW STYLES ABOVE */
 /* =================== */
 /* MEDIA QUERIES BELOW */
