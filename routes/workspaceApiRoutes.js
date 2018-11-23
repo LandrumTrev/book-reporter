@@ -13,7 +13,7 @@
 // GET all resources for each topic
 
 // POST new topic for project
-// POST new resource for each topic
+// POST new resource name and resource content for each topic
 
 // PUT change name of a topic
 // PUT change project assignment of topic (?)
