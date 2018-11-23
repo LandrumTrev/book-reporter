@@ -11,10 +11,10 @@
 
 // jQuery calls to workspaceApiRoutes.js
 
-// GET all topics for project
-// GET all resources for each topic
+// GET all topics for project - DONE
+// GET all resources for each topic - DONE
 
-// POST new topic for project
+// POST new topic for project - DONE
 // POST new resource for each topic
 
 // PUT change name of a topic
@@ -56,9 +56,33 @@ $(document).ready(function () {
         // console.log(topicName + " - id: " + tID);
 
         // define a Topic list DOM element item id="topic1"
-        var topicLI = $("<a id='topic" + tID + "' href='#' class='list-group-item list-group-item-action'></a>");
+        var topicLI = $("<div id='topic" + tID + "' class='list-group-item list-group-item-action'></div>");
         // and .append to it an h5 to display the topicName
         topicLI.append("<h5 class='mb-0'>" + topicName + "</h5>");
+
+        // create an "Add Resource" input and button at the top of every Topic list of Resources
+        var newResourceInput = $("<div class='input-group mb-3'><div class='input-group-prepend'><button class='btn btn-outline-secondary' type='button' id='add-resource-button-" + tID + "' data-topic='" + tID + "'>Add Resource</button></div><input id='add-resource-name-" + tID + "' type='text' class='form-control' placeholder='add a new Resource to this Topic'></div>")
+        // append the "Add Resource" input below the Topic Name and above the Resource list
+        topicLI.append(newResourceInput);
+
+
+        // event handler for the "Add Resource" button and input field, calls addResource() function
+        $(document).on("click", "#add-resource-button-" + tID, function () {
+
+          var thisTopic = ($(this).attr('data-topic'));
+          // console.log(thisTopic);
+
+          var newResource = $("#add-resource-name-" + thisTopic).val().trim();
+          console.log(newResource);
+
+          // POST a call to workspaceApiRoutes /api/:user/:project/:topic/newresource
+          $.post("/api/resources/" + userId + "/" + projectId + "/" + thisTopic + "/" + newResource, function (newTopic) {
+            // reload the page to re-run getTopicsAndResources() to show the new Resource
+            location.reload(true);
+          });
+        });
+
+
 
         // and create a <div> to hold that Topic's Resources
         var resourceGroup = $("<div id='topic" + tID + "resources' class='list-group'></div>");
@@ -131,8 +155,24 @@ $(document).ready(function () {
   // ========================================================
 
 
+  // // event handler for the "Add Resource" button and input field, calls addResource() function
+  // $(document).on("click", "#add-resource-button-" + tID, addResource);
 
-  
+
+  // // function called by event handler for the "Add Topic" button and input field
+  // function addResource() {
+  //   var newResource = $("#add-resource-name-" + tID).val().trim();
+  //   console.log(newResource);
+
+  //   // POST a call to workspaceApiRoutes /api/:user/:project/:topic/newresource
+  //   $.post("/api/" + userId + "/" + projectId + "/" + tID + "/" + newTopic, function (newTopic) {
+  //     // reload the page to re-run getTopicsAndResources() to show the new Resource
+  //     location.reload(true);
+  //   });
+  // };
+
+
+
 
   // ========================================================
 }); // end jQuery wrapper function

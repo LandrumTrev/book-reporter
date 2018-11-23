@@ -25,6 +25,9 @@ var db = require("../models");
 
 module.exports = function (app) {
 
+  // GET ROUTES
+  // ========================================================
+
   // Get all Topics of a Project (of a User)
   // called by getTopicsAndResources() in workSpace.js (first call)
   app.get("/api/:user/:project/topics", function (req, res) {
@@ -38,6 +41,8 @@ module.exports = function (app) {
       res.json(dbTopics);
     });
   });
+
+  // ========================================================
 
   // Get all Resources of a Topic (of a Project of a User)
   // called by getTopicsAndResources() in workSpace.js (second call)
@@ -54,11 +59,19 @@ module.exports = function (app) {
   });
 
 
+  // ========================================================
+  // ========================================================
+  // ========================================================
+
+
+  // POST ROUTES
+  // ========================================================
 
   // create a new Topic in the Project
   app.post("/api/:user/:project/:newtopic", function (req, res) {
-    console.log(req.params.newtopic);
-    console.log(req.params.project);
+    // console.log(req.params.user);
+    // console.log(req.params.project);
+    // console.log(req.params.newtopic);
     db.Topic.create({
         topicName: req.params.newtopic,
         ProjectId: req.params.project
@@ -66,16 +79,50 @@ module.exports = function (app) {
       // pass the result of our call
       .then(function (dbTopic) {
         // log the result to our terminal/bash window
-        console.log(dbTopic);
+        // console.log(dbTopic);
         // redirect
-        // res.redirect("/workSpace.html");
+        res.redirect('back');
+      });
+  });
+
+  // ========================================================
+
+
+  // create a new Resource in the Topic
+  app.post("/api/resources/:user/:project/:topic/:newresource", function (req, res) {
+    // console.log(req.params.user);
+    // console.log(req.params.project);
+    // console.log(req.params.topic);
+    // console.log(req.params.newresource);
+    db.Resource.create({
+        resourceName: req.params.newresource,
+        TopicId: req.params.topic
+      })
+      // pass the result of our call
+      .then(function (dbResource) {
+        // log the result to our terminal/bash window
+        // console.log(dbResource);
+        // redirect
         res.redirect('back');
       });
   });
 
 
+  // ========================================================
+  // ========================================================
+  // ========================================================
 
 
+
+  // UPDATE ROUTES
+  // ========================================================
+
+
+
+
+  // ========================================================
+  // ========================================================
+  // ========================================================
 
 
 
