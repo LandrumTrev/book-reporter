@@ -21,8 +21,8 @@
 // PUT change content of a resource
 // PUT change topic assignment of a resource (?)
 
-// DELETE a topic from project
-// DELETE a resource from topic
+// DELETE a topic from project - DONE
+// DELETE a resource from topic - DONE
 
 
 var db = require("../models");
