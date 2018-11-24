@@ -60,13 +60,15 @@ $(document).ready(function () {
         // define a Topic list DOM element item id="topic1"
         var topicLI = $("<div id='topic" + tID + "' class='list-group-item list-group-item-action'></div>");
 
-        // var deleteTopicButton = $("<button type='button' class='delete-topic btn btn-outline-danger btn-sm p-0 mb-2 float-right' style='width:25px;height:25px;'>x</button>");
         // delete resource button (burn icon)
-        var deleteTopicButton = $("<i class='delete-topic fas fa-burn p-0 mb-0 mr-2 float-left'></i>");
+        var deleteTopicButton = $("<i id='delete-topic-button-" + tID + "' class='delete-topic fas fa-burn p-0 mb-0 mr-3 float-left' data-topic='" + tID + "'></i>");
+        // append to the Topic container topicLI before the Topic Headline
         topicLI.append(deleteTopicButton);
 
-        // and .append to it an h5 to display the topicName
-        topicLI.append("<h5 class='p-0 mb-2 float-left'>" + topicName + "</h5>");
+        // display the topicName data as the Topic Headline
+        var topicHeadline = $("<h5 class='p-0 mb-2 float-left'>" + topicName + "</h5>");
+        // append to the Topic container topicLI after the Topic Delete Button
+        topicLI.append(topicHeadline);
 
         // create an "Add Resource" input and button at the top of every Topic list of Resources
         var newResourceInput = $("<div class='input-group mb-3'><div class='input-group-prepend'><button class='btn btn-outline-secondary' type='button' id='add-resource-button-" + tID + "' data-topic='" + tID + "'>Add Resource</button></div><input id='add-resource-name-" + tID + "' type='text' class='form-control' placeholder='add a new Resource to this Topic'></div>")
@@ -75,20 +77,31 @@ $(document).ready(function () {
 
         // ==========================================================
 
-        // event handler for the "Add Resource" button and input field, calls addResource() function
-        $(document).on("click", "#add-resource-button-" + tID, function () {
+        // event handler for the "Delete Topic" burn icon button
+        $(document).on("click", "#delete-topic-button-" + tID, function () {
 
-          var thisTopic = ($(this).attr('data-topic'));
-          // console.log(thisTopic);
+          console.log("delete clicked!");
 
-          var newResource = $("#add-resource-name-" + thisTopic).val().trim();
-          console.log(newResource);
+          var confirmDelete = confirm("Are you sure you want to delete this Topic?");
 
-          // POST a call to workspaceApiRoutes /api/:user/:project/:topic/newresource
-          $.post("/api/resources/" + userId + "/" + projectId + "/" + thisTopic + "/" + newResource, function (newTopic) {
-            // reload the page to re-run getTopicsAndResources() to show the new Resource
-            location.reload(true);
-          });
+          if (confirmDelete == true) {
+
+            var thisTopic = ($(this).attr('data-topic'));
+            console.log(thisTopic);
+
+            // Send the DELETE request with the topicId set as the data-topic="" value of the delete button
+            $.ajax("/api/topics/" + thisTopic, {
+              type: "DELETE"
+            }).then(
+              function (result) {
+                // console.log(result);
+                // console.log("topic id: " + thisTopic + " has been deleted.");
+                // Reload the page to get the updated list
+                location.reload(true);
+              });
+          } else {
+            console.log("delete cancelled.");
+          }
         });
 
         // ==========================================================
@@ -136,7 +149,7 @@ $(document).ready(function () {
             var resourceItem = $("<div id='resource" + resourceId + "' class='resname list-group-item list-group-item-action'></div>");
 
             // delete resource button (burn icon)
-            var deleteResourceButton = $("<i class='delete-resource fas fa-burn p-0 mb-0 mr-2 float-left'></i>");
+            var deleteResourceButton = $("<i id='delete-resource-button-" + resourceId + "' class='delete-resource fas fa-burn p-0 mb-0 mr-3 float-left' data-topic='" + resourceId + "'></i>");
             // append to the resourceItem container DIV before Resource Name
             resourceItem.append(deleteResourceButton);
 
@@ -144,6 +157,36 @@ $(document).ready(function () {
             var resourceHeadline = $("<h6 class='resname p-0 mb-1'>" + resourceName + "</h6>");
             // append it to the resourceItem container DIV after delete (burn) icon
             resourceItem.append(resourceHeadline);
+
+
+            // event handler for the "Delete Topic" burn icon button
+            $(document).on("click", "#delete-resource-button-" + resourceId, function () {
+
+              console.log("delete clicked!");
+
+              var confirmDelete = confirm("Are you sure you want to delete this Resource?");
+
+              if (confirmDelete == true) {
+
+                var thisResource = ($(this).attr('data-topic'));
+                console.log(thisResource);
+
+                // Send the DELETE request with the topicId set as the data-topic="" value of the delete button
+                $.ajax("/api/resources/" + thisResource, {
+                  type: "DELETE"
+                }).then(
+                  function (result) {
+                    // console.log(result);
+                    // console.log("topic id: " + thisTopic + " has been deleted.");
+                    // Reload the page to get the updated list
+                    location.reload(true);
+                  });
+              } else {
+                console.log("delete cancelled.");
+              }
+            });
+
+            // ==========================================================
 
             // $(".resname").click(function () {
             //   console.log("I got clicked!");
@@ -274,4 +317,6 @@ $(".change-status").on("click", function (event) {
     $("#new-item").val("");
     location.reload();
   });
+
+
 });

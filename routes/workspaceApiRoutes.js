@@ -120,17 +120,45 @@ module.exports = function (app) {
   // DELETE ROUTES
   // ========================================================
 
-  // // Delete an example by id
-  // app.delete("/api/examples/:id", function (req, res) {
-  //   db.Example.destroy({
-  //     where: {
-  //       id: req.params.id
-  //     }
-  //   }).then(function (dbExample) {
-  //     res.json(dbExample);
-  //   });
-  // });
+  // Delete an example by id
+  app.delete("/api/topics/:topic", function (req, res) {
+    db.Topic.destroy({
+      where: {
+        id: req.params.topic
+      }
+    }).then(function (dbTopic) {
 
+      if (dbTopic.affectedRows == 0) {
+        // if no rows affected (so, nothing deleted), return 404 (not found)
+        return res.status(404).end();
+      } else {
+        // otherwise (if item was deleted), return 200 (everything good)
+        res.status(200).end();
+        // res.json(dbTopic);
+      }
+    });
+  });
+
+  // ========================================================
+
+  // Delete an example by id
+  app.delete("/api/resources/:resource", function (req, res) {
+    db.Resource.destroy({
+      where: {
+        id: req.params.resource
+      }
+    }).then(function (dbResource) {
+
+      if (dbResource.affectedRows == 0) {
+        // if no rows affected (so, nothing deleted), return 404 (not found)
+        return res.status(404).end();
+      } else {
+        // otherwise (if item was deleted), return 200 (everything good)
+        res.status(200).end();
+        // res.json(dbTopic);
+      }
+    });
+  });
 
   // ========================================================
   // ========================================================
