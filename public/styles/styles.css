@@ -1,16 +1,36 @@
 .list-group-item {
-   line-height: 2.5;
+  line-height: 2.5;
 }
 
 body {
-   background-color: aliceblue;
+  background-color: aliceblue;
 }
 
 /* PRE-EXISTING STYLES ABOVE (remove/change/keep/whatevs) */
 /* =================== */
 /* NEW STYLES BELOW */
 
+.resname {
+  font-size: 1.1rem;
+  line-height: 2rem;
+}
 
+.rescont {
+  font-size: .8rem;
+  line-height: 1.1rem;
+}
+
+.delete-resource {
+  position: relative;
+  top: 7px;
+  color: blue;
+}
+
+.delete-topic {
+  position: relative;
+  top: 5px;
+  color: red;
+}
 
 
 /* NEW STYLES ABOVE */
@@ -22,38 +42,30 @@ body {
 
 /* Extra small devices (phones, 575px and down) */
 @media only screen and (max-width: 575px) {
-
-   body {
-      background-color: #fff;
-   }
-
+  body {
+    background-color: #fff;
+  }
 }
 
 /* Small devices (portrait tablets and large phones, 576px and up) */
 @media only screen and (min-width: 576px) {
-
-   body {
-      background-color: aliceblue;
-   }
-
+  body {
+    background-color: aliceblue;
+  }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-
-   body {
-      background-color: #fff;
-   }
-
+  body {
+    background-color: #fff;
+  }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-
-   body {
-      background-color: aliceblue;
-   }
-
+  body {
+    background-color: aliceblue;
+  }
 }
 
 /* MEDIA QUERIES FOR BREAKPOINTS ABOVE */
