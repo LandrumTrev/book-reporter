@@ -169,7 +169,31 @@ module.exports = function (app) {
   // UPDATE ROUTES
   // ========================================================
 
+  // PUT route for updating Resource content. 
+  // Get the updated Resource content from req.body
+  app.put("/api/resource-content/:resource", function (req, res) {
 
+    // console.log(req.body.resourceContent);
+    // console.log(req.body);
+    // console.log(req.params.resource);
+    
+    // Update takes in an object describing the properties we want to update, and
+    // we use where to describe which objects we want to update
+    db.Resource.update({
+        resourceContent: req.body.resourceContent
+      }, {
+        where: {
+          id: req.params.resource
+        }
+      }).then(function (dbResCont) {
+        res.json(dbResCont);
+      })
+      .catch(function (err) {
+        // Whenever a validation or flag fails, an error is thrown
+        // We can "catch" the error to prevent it from being "thrown", which could crash our node app
+        res.json(err);
+      });
+  });
 
 
   // ========================================================

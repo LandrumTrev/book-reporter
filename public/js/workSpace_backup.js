@@ -190,46 +190,11 @@ $(document).ready(function () {
             // ==========================================================    
 
             // create a Resource Content box list item with id="resourceContent1"
-            var resourceBox = $("<textarea class='form-control rescont mb-0' rows='7' wrap='hard' id='ResourceId-" + resourceId + "' data-ResourceId='" + resourceId + "' placeholder='" + resourceContent + "'></textarea>");
-
-            $(document).on("focus", "#ResourceId-" + resourceId, editResource);
-
-            function editResource() {
-              // $(this).val($(this).attr('placeholder'));
-              // console.log($(this).val());
-              // console.log($(this).attr('placeholder'));
-              var resContPlaceholder = $(this).attr('placeholder');
-              $(this).val(resContPlaceholder);
-            }
-
-            $(document).on("blur", "#ResourceId-" + resourceId, updateResource);
-
-            function updateResource() {
-
-              var resId = $(this).attr('data-ResourceId');
-              console.log(resId);
-
-              var thisResVal = $(this).val().trim();
-              console.log(thisResVal);
-
-              var putResVal = {
-                resourceContent: thisResVal
-              };
-            
-              // Send the PUT request with the swapped value as the new value in database
-              $.ajax("/api/resource-content/" + resId, {
-                type: "PUT",
-                data: putResVal
-              }).then(function (result) {
-                console.log(result);
-                // console.log("resource content updated");
-                // Reload the page to get the updated list
-                location.reload();
-              });
-            }
-
+            var resourceBox = $("<li id='ResourceId-" + resourceId + "' class='list-group-item todo-item rescont mb-0' data-ResourceId='" + resourceId + "'>" + resourceContent + "<input type='text' class='edit' style='display: none;'></li>");
             // and append the ResourceContent to the resourceItem headline
             $(resourceItem).append(resourceBox);
+
+            $(document).on("click", "#ResourceId-" + resourceId, editResource);
 
             // and append the Resource list item to the resourceGroup container for that Topic
             $("#topic" + resourceTopic).append(resourceItem);
@@ -243,28 +208,28 @@ $(document).ready(function () {
 
   // ========================================================
 
-  // // $(document).on("click", ".rescont", editResource);
+  // $(document).on("click", ".rescont", editResource);
 
-  // // This function handles showing the input box for a user to edit a todo
-  // function editResource() {
-  //   // var currentResource = $(this).data("ResourceId-");
-  //   // console.log(resourceContent);
-  //   console.log($(this).attr('id'));
-  //   console.log($(this).attr('data-ResourceId'));
-  //   // console.log($(this).resourceContent);
-  //   $(this)
-  //     .children()
-  //     .hide();
-  //   $(this)
-  //     .children("input.edit")
-  //     .val();
-  //   $(this)
-  //     .children("input.edit")
-  //     .show();
-  //   $(this)
-  //     .children("input.edit")
-  //     .focus();
-  // }
+  // This function handles showing the input box for a user to edit a todo
+  function editResource() {
+    // var currentResource = $(this).data("ResourceId-");
+    // console.log(resourceContent);
+    console.log($(this).attr('id'));
+    console.log($(this).attr('data-ResourceId'));
+    // console.log($(this).resourceContent);
+    $(this)
+      .children()
+      .hide();
+    $(this)
+      .children("input.edit")
+      .val();
+    $(this)
+      .children("input.edit")
+      .show();
+    $(this)
+      .children("input.edit")
+      .focus();
+  }
 
   // ========================================================
 
