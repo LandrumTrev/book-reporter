@@ -9,7 +9,8 @@
 // Sequelize uses to create "Projects" (pluralized) table
 // ====================================================
 
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
+
   var Project = sequelize.define("Project", {
     projectName: {
       type: DataTypes.STRING,
@@ -21,14 +22,25 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-  Project.associate = function(models) {
+  Project.associate = function (models) {
     Project.belongsTo(models.User, {
       onDelete: "CASCADE",
       foreignKey: {
         allowNull: false
       }
+    }),
+    Project.hasMany(models.Topic, {
+      onDelete: "CASCADE"
     });
   };
 
   return Project;
 };
+
+// Project.associate = function (models) {
+//   // Associating Project with Topic
+//   // When an Project is deleted, also delete any associated Topics
+//   Project.hasMany(models.Topic, {
+//     onDelete: "CASCADE"
+//   });
+// };

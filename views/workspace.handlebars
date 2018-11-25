@@ -9,3 +9,35 @@
 {{!-- htmlRoutes.js renders a Handlebars view for the Project's Topics/Resources/Resource Editor page --}}
 {{!-- when finished, also incorporate the code in wordprocessor.handlebars into this page --}}
 {{!-- ==================================================== --}}
+
+<div id="home">
+  <div class="container">
+    <div class="row">
+      <div class="col-8 offset-2">
+
+        {{!-- BASIC PROJECT INFO --}}
+        <p>
+          {{!-- write out the .description of {{example}} data --}}
+          <strong>User ID:</strong> {{project.UserId}},
+          {{!-- write out the .id of {{example}} data --}}
+          <strong>Project ID</strong>: {{project.id}},
+          {{!-- write out the .text of {{example}} data --}}
+          <strong>Project Name</strong>: {{project.projectName}}
+        </p>
+
+        {{!-- TOPICS AND RESOURCES TEMPLATING --}}
+
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- JQUERY -->
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+
+{{!-- link to the event handlers scripts for this page --}}
+<script src="/js/workSpace.js"></script>
