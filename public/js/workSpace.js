@@ -39,24 +39,6 @@ $(document).ready(function () {
 
   // ==========================================================
 
-  // event handler for the "Add Topic" button and input field, calls addTopic() function
-  $(document).on("click", "#add-topic-button", addTopic);
-
-  // ==========================================================
-
-  // function called by event handler for the "Add Topic" button and input field
-  function addTopic() {
-    var newTopic = $("#add-topic-name").val().trim();
-    console.log(newTopic);
-
-    // POST a call to workspaceApiRoutes /api/:user/:project/newtopic
-    $.post("/api/" + userId + "/" + projectId + "/" + newTopic, function (newTopic) {
-      // reload the page to re-run getTopicsAndResources() to show the new Topic
-      location.reload(true);
-    });
-  };
-
-  // ==========================================================
 
   // function places placeholder="" content into value="" of Resource Content field
   function editResource() {
@@ -159,19 +141,53 @@ $(document).ready(function () {
 
   // ==========================================================
 
+  // event handler for the "Add Topic" button and input field, calls addTopic() function
+  $(document).on("click", "#add-topic-button", addTopic);
+
+  // ==========================================================
+
+  // function called by event handler for the "Add Topic" button and input field
+  function addTopic() {
+    var newTopic = $("#add-topic-name").val().trim();
+    console.log(newTopic);
+
+    // POST a call to workspaceApiRoutes /api/:user/:project/newtopic
+    $.post("/api/" + userId + "/" + projectId + "/" + newTopic, function (newTopic) {
+      // reload the page to re-run getTopicsAndResources() to show the new Topic
+      location.reload(true);
+    });
+  };
 
   // ==========================================================
 
 
 
+  // ==========================================================
+
+  // ==========================================================
+
+  getProjectTopicsResources();
+
+  // ==========================================================
+
+  function getProjectTopicsResources() {
+
+    $.get("/api/projects/" + projectId, function (projectdata) {
+
+      console.log(projectdata);
+
+    });
+
+
+  };
 
 
 
+  // ==========================================================
 
   // on page load, get all Topics and Resources for the Project
   // get these variables (demo values above) from Local Storage (Melissa)
   getTopicsAndResources(userId, projectId);
-
 
   // ==========================================================
 

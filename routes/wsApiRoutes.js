@@ -63,9 +63,29 @@ module.exports = function (app) {
     });
   });
 
+  // ========================================================
+
+  // Get all Topics and Resources of a Project
+  app.get("/api/projects/:project", function (req, res) {
+    db.Project.findAll({
+      where: {
+        id: req.params.project
+      },
+      include: [{
+        model: db.Topic,
+        include: [
+          db.Resource
+        ]
+      }]
+    }).then(function (dbProject) {
+      res.json(dbProject);
+    });
+  });
 
   // ========================================================
-  // ========================================================
+
+  // include: [ { model: db.Topic, include: [ db.Resource ] } ]
+
   // ========================================================
 
 
@@ -94,7 +114,7 @@ module.exports = function (app) {
 
 
   // create a new Resource in the Topic
-  app.post("/api/resource-new/:user/:project/:topic/:resourcename", function(req, res) {
+  app.post("/api/resource-new/:user/:project/:topic/:resourcename", function (req, res) {
     // console.log(req.params.user);
     // console.log(req.params.project);
     // console.log(req.params.topic);
