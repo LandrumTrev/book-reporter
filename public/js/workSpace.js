@@ -37,7 +37,7 @@ $(document).ready(function () {
   var projectId = thisURL[thisURL.length - 1];
   // console.log(projectId);
 
-  
+
   // pass variable for userId from signin page
   var userId = 1;
 
@@ -133,8 +133,6 @@ $(document).ready(function () {
         function (result) {
           location.reload(true);
         });
-    } else {
-      // console.log("delete cancelled.");
     }
   };
 
@@ -200,12 +198,11 @@ $(document).ready(function () {
 
         var aTopic = projectdata.Topics[i];
         // console.log(aTopic);
-        var aTopicID = projectdata.Topics[i].id;
-        var aTopicName = projectdata.Topics[i].topicName;
-        console.log("Topic ID: " + aTopicID + ", Topic Name: " + aTopicName);
+        // var aTopicID = projectdata.Topics[i].id;
+        // var aTopicName = projectdata.Topics[i].topicName;
+        // console.log("Topic ID: " + aTopicID + ", Topic Name: " + aTopicName);
 
-
-
+        buildNewTopic(aTopic);
 
       } // end Topics FOR LOOP
 
@@ -215,7 +212,24 @@ $(document).ready(function () {
 
   // ==========================================================
 
+  function buildNewTopic(topic) {
 
+    // console.log(topic);
+    console.log(topic.id);
+    console.log(topic.topicName);
+    console.log(topic.Resources);
+
+    var newTopicBox;
+
+
+
+    
+  };
+
+
+  // ==========================================================
+
+  // ==========================================================
 
   // ==========================================================
 
