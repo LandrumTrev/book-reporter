@@ -31,10 +31,15 @@
 // start jQuery wrapper function
 $(document).ready(function () {
 
+  // get the Project ID for this page from the last char in the current URL
+  var thisURL = window.location.href;
+  // console.log(thisURL);
+  var projectId = thisURL[thisURL.length - 1];
+  // console.log(projectId);
+
+  
   // pass variable for userId from signin page
   var userId = 1;
-  // pass variable for projectId from myProjects page
-  var projectId = 1;
 
 
   // ==========================================================
@@ -175,31 +180,40 @@ $(document).ready(function () {
     $.get("/api/projects/" + projectId, function (projectdata) {
 
       // console.log(projectdata);
-      console.log("Project ID: " + projectdata.id);
-      console.log("Project Name: " + projectdata.projectName);
+      // console.log("Project ID: " + projectdata.id);
+      // console.log("Project Name: " + projectdata.projectName);
 
       // FOR LOOP projectdata.Topics Array to get all Topics
       // extract .id as tID, .topicName as tName
-      console.log(projectdata.Topics);
-      // console.log(projectdata.Topics[0]);
-      // console.log(projectdata.Topics[0].id);
-      // console.log(projectdata.Topics[0].topicName);
+      // console.log(projectdata.Topics);
 
       // FOR LOOP each projectdata.Topics[i].Resources to get Topic's Resources
       // extract .id as rID, .resourceName as rName, .resourceContent as rContent
-      console.log(projectdata.Topics[0].Resources);
+      // console.log(projectdata.Topics[0].Resources);
       // console.log(projectdata.Topics[0].Resources[0]);
       // console.log(projectdata.Topics[0].Resources[0].id);
       // console.log(projectdata.Topics[0].Resources[0].resourceName);
       // console.log(projectdata.Topics[0].Resources[0].resourceContent);
 
+      // loop through all Topics in the projectdata
+      for (let i = 0; i < projectdata.Topics.length; i++) {
+
+        var aTopic = projectdata.Topics[i];
+        // console.log(aTopic);
+        var aTopicID = projectdata.Topics[i].id;
+        var aTopicName = projectdata.Topics[i].topicName;
+        console.log("Topic ID: " + aTopicID + ", Topic Name: " + aTopicName);
 
 
 
-    });
 
+      } // end Topics FOR LOOP
 
-  };
+    }); // end GET Project API call
+
+  }; // end function
+
+  // ==========================================================
 
 
 
