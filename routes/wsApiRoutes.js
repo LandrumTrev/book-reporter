@@ -67,7 +67,7 @@ module.exports = function (app) {
 
   // Get all Topics and Resources of a Project
   app.get("/api/projects/:project", function (req, res) {
-    db.Project.findAll({
+    db.Project.findOne({
       where: {
         id: req.params.project
       },
