@@ -94,8 +94,7 @@ module.exports = function (app) {
 
 
   // create a new Resource in the Topic
-  // app.post("/api/resource-new/:user/:project/:topic/:newresource", function(req, res) {
-  app.post("/api/resource-new/:topic/:resourcename", function (req, res) {
+  app.post("/api/resource-new/:user/:project/:topic/:resourcename", function(req, res) {
     // console.log(req.params.user);
     // console.log(req.params.project);
     // console.log(req.params.topic);

@@ -12,6 +12,7 @@
 
 <div id="home">
   <div class="container">
+
     <div class="row">
       <div class="col-8 offset-2">
 
@@ -25,17 +26,33 @@
           <strong>Project Name</strong>: {{project.projectName}}
         </p>
 
-        {{!-- TOPICS AND RESOURCES TEMPLATING --}}
+      </div>
+    </div>
 
+    <div class="row">
+      <div class="col-8 offset-2">
 
+        {{!-- ADD NEW TOPIC INPUT FIELD AND BUTTON --}}
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <button class="btn btn-outline-secondary" type="button" id="add-topic-button">Add Topic</button>
+          </div>
+          <input id="add-topic-name" type="text" class="form-control" placeholder="add a new Topic to this Project">
+        </div>
 
+        <br>
+        <br>
+
+        {{!-- DIV TO FILL WITH TOPICS AND RESOURCES --}}
+        <div id="topics_display" class="list-group"></div>
 
       </div>
     </div>
+
   </div>
 </div>
 
-<!-- JQUERY -->
+{{!-- JQUERY --}}
 <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
   crossorigin="anonymous"></script>
 
