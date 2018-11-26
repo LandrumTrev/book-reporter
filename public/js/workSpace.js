@@ -174,7 +174,28 @@ $(document).ready(function () {
 
     $.get("/api/projects/" + projectId, function (projectdata) {
 
-      console.log(projectdata);
+      // only returns 1 project in projectdata Array, so element [0]
+      // console.log(projectdata[0]);
+      console.log("Project ID: " + projectdata[0].id);
+      console.log("Project Name: " + projectdata[0].projectName);
+
+      // FOR LOOP projectdata[0].Topics Array to get all Topics
+      // extract .id as tID, .topicName as tName
+      console.log(projectdata[0].Topics);
+      // console.log(projectdata[0].Topics[0]);
+      // console.log(projectdata[0].Topics[0].id);
+      // console.log(projectdata[0].Topics[0].topicName);
+
+      // FOR LOOP each projectdata[0].Topics[i].Resources to get Topic's Resources
+      // extract .id as rID, .resourceName as rName, .resourceContent as rContent
+      console.log(projectdata[0].Topics[0].Resources);
+      // console.log(projectdata[0].Topics[0].Resources[0]);
+      // console.log(projectdata[0].Topics[0].Resources[0].id);
+      // console.log(projectdata[0].Topics[0].Resources[0].resourceName);
+      // console.log(projectdata[0].Topics[0].Resources[0].resourceContent);
+
+      
+
 
     });
 
