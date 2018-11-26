@@ -25,22 +25,24 @@ module.exports = function (app) {
 
   // Load the workspace page by project id
   app.get("/:id", function (req, res) {
-    db.Project.find({
+    db.Project.findOne({
       where: {
         id: req.params.id
       },
       include: [{
-        model: db.Topic
+        model: db.Topic,
+        include: [
+          db.Resource
+        ]
       }]
     }).then(function (dbProject) {
       res.render("workspace", {
         project: dbProject
       });
-      console.log(dbProject);
     });
-  });
+  }); // end app.get
 
-};
+}; // end module.exports
 
 
 
