@@ -15,14 +15,15 @@
 // POST new topic for project - DONE
 // POST new resource name for each topic - DONE
 
-// PUT change name of a topic
-// PUT change project assignment of topic (?)
-// PUT change name of a resource
-// PUT change content of a resource
-// PUT change topic assignment of a resource (?)
-
 // DELETE a topic from project - DONE
 // DELETE a resource from topic - DONE
+
+// PUT change content of a resource - DONE
+// PUT change name of a topic
+// PUT change name of a resource
+
+// PUT change topic assignment of a resource (?)
+// PUT change project assignment of topic (?)
 
 
 var db = require("../models");
@@ -62,9 +63,29 @@ module.exports = function (app) {
     });
   });
 
+  // ========================================================
+
+  // Get all Topics and Resources of a Project
+  app.get("/api/projects/:project", function (req, res) {
+    db.Project.findOne({
+      where: {
+        id: req.params.project
+      },
+      include: [{
+        model: db.Topic,
+        include: [
+          db.Resource
+        ]
+      }]
+    }).then(function (dbProject) {
+      res.json(dbProject);
+    });
+  });
 
   // ========================================================
-  // ========================================================
+
+  // include: [ { model: db.Topic, include: [ db.Resource ] } ]
+
   // ========================================================
 
 
@@ -93,13 +114,13 @@ module.exports = function (app) {
 
 
   // create a new Resource in the Topic
-  app.post("/api/resources/:user/:project/:topic/:newresource", function (req, res) {
+  app.post("/api/resource-new/:user/:project/:topic/:resourcename", function (req, res) {
     // console.log(req.params.user);
     // console.log(req.params.project);
     // console.log(req.params.topic);
-    // console.log(req.params.newresource);
+    console.log(req.params.resourcename);
     db.Resource.create({
-        resourceName: req.params.newresource,
+        resourceName: req.params.resourcename,
         TopicId: req.params.topic
       })
       // pass the result of our call
@@ -169,7 +190,31 @@ module.exports = function (app) {
   // UPDATE ROUTES
   // ========================================================
 
+  // PUT route for updating Resource content. 
+  // Get the updated Resource content from req.body
+  app.put("/api/resource-content/:resource", function (req, res) {
 
+    // console.log(req.body.resourceContent);
+    // console.log(req.body);
+    // console.log(req.params.resource);
+
+    // Update takes in an object describing the properties we want to update, and
+    // we use where to describe which objects we want to update
+    db.Resource.update({
+        resourceContent: req.body.resourceContent
+      }, {
+        where: {
+          id: req.params.resource
+        }
+      }).then(function (dbResCont) {
+        res.json(dbResCont);
+      })
+      .catch(function (err) {
+        // Whenever a validation or flag fails, an error is thrown
+        // We can "catch" the error to prevent it from being "thrown", which could crash our node app
+        res.json(err);
+      });
+  });
 
 
   // ========================================================

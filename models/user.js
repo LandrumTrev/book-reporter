@@ -9,13 +9,19 @@
 // Sequelize uses to create "Users" (pluralized) table
 // ====================================================
 
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
   var User = sequelize.define("User", {
     userName: {
       type: DataTypes.STRING,
       allowNull: false
     }
   });
+
+  User.associate = function (models) {
+    User.hasMany(models.Project, {
+      onDelete: "CASCADE"
+    });
+  };
 
   return User;
 };
