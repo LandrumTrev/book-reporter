@@ -46,62 +46,71 @@
         <div id="project_display" class="col-12 list-group pr-0">
 
 
-            {{#each project.Topics}}
+          {{#each project.Topics}}
 
-              {{!-- START EACH TOPIC CONTAINER --}}
-              <div id='t-{{id}}' class='topicbox list-group-item list-group-item-action mb-4'>
+            {{!-- START EACH TOPIC CONTAINER --}}
+            <div id='t-{{id}}' class='topicbox list-group-item list-group-item-action mb-4'>
 
-                {{!-- START TOPIC NAME DISPLAY-EDIT-DELETE --}}
-                <div class='input-group mb-3'>
-                  <div class='input-group-prepend'>
-                    <button class='btn btn-danger delete-topic' type='button' data-topic='{{id}}'>
-                      x
-                    </button>
-                  </div>
-                  <input type='text' class='tname form-control' placeholder='{{topicName}}' data-topic='{{id}}'>
+              {{!-- START TOPIC NAME DISPLAY-EDIT-DELETE --}}
+              <div class='input-group mb-3'>
+                <div class='input-group-prepend'>
+                  <button class='btn btn-danger delete-topic' type='button' data-topic='{{id}}'>
+                    x
+                  </button>
                 </div>
-                {{!-- END TOPIC NAME DISPLAY-EDIT-DELETE --}}
+                <input type='text' class='tname form-control' placeholder='{{topicName}}' data-topic='{{id}}'>
+              </div>
+              {{!-- END TOPIC NAME DISPLAY-EDIT-DELETE --}}
 
-                {{!-- START ADD RESOURCE TO TOPIC FIELD AND BUTTON --}}
-                <div class='input-group mb-3'>
-                  <div class='input-group-prepend'>
-                    <button class='btn btn-success add-resource' type='button' data-topic='{{id}}'>
-                      +
-                    </button>
-                  </div>
-                  <input id='add-resource-name-{{id}}' type='text' class='form-control' placeholder='add a Resource to this Topic'>
+              {{!-- START ADD RESOURCE TO TOPIC FIELD AND BUTTON --}}
+              <div class='input-group mb-3'>
+                <div class='input-group-prepend'>
+                  <button class='btn btn-success add-resource' type='button' data-topic='{{id}}'>
+                    +
+                  </button>
                 </div>
-                {{!-- END ADD RESOURCE TO TOPIC FIELD AND BUTTON --}}
+                <input id='add-resource-name-{{id}}' type='text' class='form-control' placeholder='add a Resource to this Topic'>
+              </div>
+              {{!-- END ADD RESOURCE TO TOPIC FIELD AND BUTTON --}}
 
-                {{!-- START EACH RESOURCE CONTAINER --}}
-                <div id='resourcelist-t-{{id}}' class='list-group'>
+              {{!-- START EACH RESOURCE CONTAINER --}}
+              <div id='resourcelist-t-{{id}}' class='list-group'>
 
-                  {{#each Resources}}
+                {{#each Resources}}
 
-                    {{!-- START RESOURCE NAME DISPLAY-EDIT-DELETE --}}
-                    <div class='input-group mb-1'>
-                      <div class='input-group-prepend'>
-                        <button class='btn btn-primary delete-resource' type='button' data-resource='{{id}}'>
-                          x
-                        </button>
-                      </div>
-                      <input type='text' class='rname form-control' placeholder='{{resourceName}}' data-resource='{{id}}'>
+                  {{!-- START RESOURCE NAME DISPLAY-EDIT-DELETE --}}
+                  <div class='input-group mb-1'>
+
+                    <div class='input-group-prepend'>
+                      <button class='btn btn-primary delete-resource' type='button' data-resource='{{id}}'>
+                        x
+                      </button>
                     </div>
-                    {{!-- END RESOURCE NAME DISPLAY-EDIT-DELETE --}}
 
-                    {{!-- START RESOURCE CONTENT AREA --}}
-                    <textarea id='content-r-{{id}}' class='rescont form-control mb-3' placeholder='{{resourceContent}}' data-resource='{{id}}'></textarea>
-                    {{!-- END RESOURCE CONTENT AREA --}}
+                    <input type='text' class='rname form-control' placeholder='{{resourceName}}' data-resource='{{id}}'>
 
-                  {{/each}}
+                    <div class='input-group-append'>
+                      <button class='btn btn-outline-primary toggle-resource' type='button' data-resource='{{id}}'>
+                        >
+                      </button>
+                    </div>
 
-                </div>
-                {{!-- END EACH RESOURCE CONTAINER --}}
+                  </div>
+                  {{!-- END RESOURCE NAME DISPLAY-EDIT-DELETE --}}
+
+                  {{!-- START RESOURCE CONTENT AREA --}}
+                  <textarea id='content-r-{{id}}' class='rescont form-control mb-3' placeholder='{{resourceContent}}' data-resource='{{id}}' style='display: block'></textarea>
+                  {{!-- END RESOURCE CONTENT AREA --}}
+
+                {{/each}}
 
               </div>
-              {{!-- END EACH TOPIC CONTAINER --}}
+              {{!-- END EACH RESOURCE CONTAINER --}}
 
-            {{/each}}
+            </div>
+            {{!-- END EACH TOPIC CONTAINER --}}
+
+          {{/each}}
 
 
         </div>

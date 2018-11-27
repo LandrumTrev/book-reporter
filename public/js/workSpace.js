@@ -51,6 +51,25 @@ $(document).ready(function () {
 
   // ==========================================================
 
+  // event listener for the .toggle-resource button to show/hide Resource Content
+  $(document).on("click", ".toggle-resource", showHideResourceContent);
+
+
+  // function called by event handler for the .toggle-resource button
+  function showHideResourceContent() {
+
+    var resID = $(this).attr('data-resource');
+    console.log(resID);
+
+    var thisResourceContent = $("#content-r-" + resID);
+    console.log(thisResourceContent);
+
+    $(thisResourceContent).toggle();
+  
+  }
+
+  // ==========================================================
+
   // event listener for the "Add Topic" button and input field, calls addTopic() function
   $(document).on("click", "#add-topic-button", addTopic);
 
