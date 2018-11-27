@@ -30,6 +30,19 @@ $(document).ready(function () {
 
   // ==========================================================
 
+  // this code resizes the textarea of each Resource Content 
+  // to the height of all text contained within (no fixed height, no scroll bars)
+  var allTextareas = $("body").find("textarea");
+  // console.log(allTextareas[0]);
+
+  for (let i = 0; i < allTextareas.length; i++) {
+    var thisTextarea = allTextareas[i];
+    // console.log(thisTextarea);
+    $(thisTextarea).height($("textarea")[i].scrollHeight);
+  }
+
+  // ==========================================================
+
   // get the Project ID for this page from the last char in the current URL
   var thisURL = window.location.href;
   // console.log(thisURL);
@@ -275,4 +288,5 @@ $(document).ready(function () {
   }
 
   // ==========================================================
+
 }); // end jQuery wrapper
