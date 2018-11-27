@@ -19,6 +19,58 @@ body {
   line-height: 1.1rem;
 }
 
+.delete-resource {
+  position: relative;
+  top: 7px;
+  color: blue;
+}
+
+.delete-topic {
+  position: relative;
+  top: 5px;
+  color: red;
+}
+
+/* OOOOOOO WORDPROCESSOR STYLES START 00000000*/
+
+.ql-toolbar {
+  background-color: azure;
+  /* visibility: hidden; */
+  text-align: center;
+  opacity: 0.8;
+}
+#resourceBlock {
+  background: linear-gradient(white, #0000ff1a);
+  box-shadow: 0px 0px 40px lightsteelblue;
+}
+.page-header {
+  text-align: center;
+  height: 11em;
+}
+#editor {
+  background-color: ghostwhite;
+  overflow: scroll;
+  height: 39em;
+  box-shadow: 0px 0px 40px lightsteelblue;
+}
+#viewNotes {
+  border-radius: 54%;
+  height: 4em;
+}
+#viewNotes:hover {
+  cursor: pointer;
+}
+#resources {
+  text-align: center;
+}
+#logo {
+  height: 26em;
+  position: fixed;
+  bottom: 59%;
+  left: 12%;
+}
+/* OOOOOOO WORDPROCESSOR STYLES END 00000000*/
+
 
 /* NEW STYLES ABOVE */
 /* =================== */
