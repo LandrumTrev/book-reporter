@@ -32,13 +32,19 @@ $(document).ready(function () {
 
   // this code resizes the textarea of each Resource Content 
   // to the height of all text contained within (no fixed height, no scroll bars)
+  // amd also sets the default css "display:none" to all textareas after sizing them
   var allTextareas = $("body").find("textarea");
   // console.log(allTextareas[0]);
 
   for (let i = 0; i < allTextareas.length; i++) {
+
     var thisTextarea = allTextareas[i];
-    // console.log(thisTextarea);
+
+    // set the height of each textarea to the scrollHeight of it's content text
     $(thisTextarea).height($("textarea")[i].scrollHeight);
+
+    // sets the default css "display:none" to all textareas after sizing them
+    // $(thisTextarea).hide();
   }
 
   // ==========================================================
@@ -51,21 +57,61 @@ $(document).ready(function () {
 
   // ==========================================================
 
-  // event listener for the .toggle-resource button to show/hide Resource Content
+  // event listener for .toggle-all-resources button to show/hide all Project Resources
+  $(document).on("click", ".toggle-all-resources", showHideProjectResources);
+
+
+  // called by .toggle-all-resources button to show/hide all Project Resources
+  function showHideProjectResources() {
+
+    // select all .rescont (all Resource Content textareas)
+    var projectResourceContents = $(".rescont");
+    // console.log(projectResourceContents);
+
+    // then toggle the visibility of all Resource Content textareas
+    // $(projectResourceContents).hide();
+    // $(projectResourceContents).show();
+    $(projectResourceContents).toggle();
+
+  }
+
+  // ==========================================================
+
+  // event listener for .toggle-topic-resources button to show/hide all Topic's Resources
+  $(document).on("click", ".toggle-topic-resources", showHideTopicResources);
+
+
+  // called by handler for the .toggle-resource button to show/hide all Topic's Resources
+  function showHideTopicResources() {
+    
+    // get the Topic id from the button's data-topic=""
+    var topicID = $(this).attr('data-topic');
+    // console.log(topicID);
+
+    // select all .rescont with a data-topic="" that matches the button's data-topic=""
+    // var topicsResourceContents = $(".rescont[data-topic='" + topicID + "']");
+    var topicsResourceContents = $(".rescont[data-topic='" + topicID + "']");
+    // console.log(topicsResourceContents);
+
+    // then toggle the visibility of just the matching .resont textareas
+    $(topicsResourceContents).toggle();
+
+  }
+
+  // ==========================================================
+
+  // event listener for .toggle-resource button to show/hide each Resource Content
   $(document).on("click", ".toggle-resource", showHideResourceContent);
 
 
-  // function called by event handler for the .toggle-resource button
+  // called by handler for the .toggle-resource button to show/hide each Resource Content
   function showHideResourceContent() {
 
     var resID = $(this).attr('data-resource');
-    console.log(resID);
-
+    // console.log(resID);
     var thisResourceContent = $("#content-r-" + resID);
-    console.log(thisResourceContent);
-
+    // console.log(thisResourceContent);
     $(thisResourceContent).toggle();
-  
   }
 
   // ==========================================================
