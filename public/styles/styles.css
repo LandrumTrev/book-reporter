@@ -10,9 +10,8 @@ body {
 /* =================== */
 /* NEW STYLES BELOW */
 
-.resname {
-  font-size: 1.1rem;
-  line-height: 2rem;
+.topicbox {
+  background-color: #eee;
 }
 
 .rescont {
