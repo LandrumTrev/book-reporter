@@ -14,23 +14,22 @@
   <div class="container">
 
     <div class="row">
-      <div class="col-8 offset-2">
+      <div class="col-12">
 
         {{!-- BASIC PROJECT INFO --}}
         <p>
-          {{!-- write out the .description of {{example}} data --}}
+          <br>
           <strong>User ID:</strong> {{project.UserId}},
-          {{!-- write out the .id of {{example}} data --}}
           <strong>Project ID</strong>: {{project.id}},
-          {{!-- write out the .text of {{example}} data --}}
           <strong>Project Name</strong>: {{project.projectName}}
+          <br>
         </p>
 
       </div>
     </div>
 
     <div class="row">
-      <div class="col-8 offset-2">
+      <div class="col-12">
 
         {{!-- ADD NEW TOPIC INPUT FIELD AND BUTTON --}}
         <div class="input-group mb-3">
@@ -43,8 +42,75 @@
         <br>
         <br>
 
-        {{!-- DIV TO FILL WITH TOPICS AND RESOURCES --}}
-        <div id="topics_display" class="list-group"></div>
+        {{!-- DIV TO FILL WITH HANDLEBARS TOPICS AND RESOURCES --}}
+        <div id="project_display" class="col-12 list-group pr-0">
+
+
+            {{#each project.Topics}}
+
+              {{!-- START EACH TOPIC CONTAINER --}}
+              <div id='t-{{id}}' class='topicbox list-group-item list-group-item-action mb-4'>
+
+                {{!-- START TOPIC NAME DISPLAY-EDIT-DELETE --}}
+                <div class='input-group mb-3'>
+                  <div class='input-group-prepend'>
+                    <button class='btn btn-danger delete-topic' type='button' data-topic='{{id}}'>
+                      x
+                    </button>
+                  </div>
+                  <input type='text' class='tname form-control' placeholder='{{topicName}}' data-topic='{{id}}'>
+                </div>
+                {{!-- END TOPIC NAME DISPLAY-EDIT-DELETE --}}
+
+                {{!-- START ADD RESOURCE TO TOPIC FIELD AND BUTTON --}}
+                <div class='input-group mb-3'>
+                  <div class='input-group-prepend'>
+                    <button class='btn btn-success add-resource' type='button' data-topic='{{id}}'>
+                      +
+                    </button>
+                  </div>
+                  <input id='add-resource-name-{{id}}' type='text' class='form-control' placeholder='add a Resource to this Topic'>
+                </div>
+                {{!-- END ADD RESOURCE TO TOPIC FIELD AND BUTTON --}}
+
+                {{!-- START EACH RESOURCE CONTAINER --}}
+                <div id='resourcelist-t-{{id}}' class='list-group'>
+
+                  {{#each Resources}}
+
+                    {{!-- START RESOURCE NAME DISPLAY-EDIT-DELETE --}}
+                    <div class='input-group mb-1'>
+                      <div class='input-group-prepend'>
+                        <button class='btn btn-primary delete-resource' type='button' data-resource='{{id}}'>
+                          x
+                        </button>
+                      </div>
+                      <input type='text' class='rname form-control' placeholder='{{resourceName}}' data-resource='{{id}}'>
+                    </div>
+                    {{!-- END RESOURCE NAME DISPLAY-EDIT-DELETE --}}
+
+                    {{!-- START RESOURCE CONTENT AREA --}}
+                    <textarea id='content-r-{{id}}' class='rescont form-control mb-3' rows='7' wrap='hard' placeholder='{{resourceContent}}' data-resource='{{id}}'></textarea>
+                    {{!-- END RESOURCE CONTENT AREA --}}
+
+                  {{/each}}
+
+                </div>
+                {{!-- END EACH RESOURCE CONTAINER --}}
+
+              </div>
+              {{!-- END EACH TOPIC CONTAINER --}}
+
+            {{/each}}
+
+
+        </div>
+
+        <br>
+        <br>
+
+        {{!-- DIV TO FILL WITH JS TOPICS AND RESOURCES --}}
+        {{!-- <div id="topics_display" class="list-group"></div> --}}
 
       </div>
     </div>

@@ -10,26 +10,13 @@ body {
 /* =================== */
 /* NEW STYLES BELOW */
 
-.resname {
-  font-size: 1.1rem;
-  line-height: 2rem;
+.topicbox {
+  background-color: #eee;
 }
 
 .rescont {
   font-size: .8rem;
   line-height: 1.1rem;
-}
-
-.delete-resource {
-  position: relative;
-  top: 7px;
-  color: blue;
-}
-
-.delete-topic {
-  position: relative;
-  top: 5px;
-  color: red;
 }
 
 
