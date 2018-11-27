@@ -36,13 +36,13 @@ the code into workspace.handlebars --}} {{!-- ==================================
             <div id="resourceBlock">
                 <h3>Topics</h3>
                 <ul class="list-group">
-                    {{#each topic}} 
+                    {{#each project.Topics}} 
                     {{/each}}
                 </ul>
                 <h3>Resources</h3>
                 <div draggable="true" ondragstart="drag(event)">
                     <ul class="list-group">
-                        {{#each resource}} 
+                        {{#each Resources}} 
                         {{/each}}
                     </ul>
                 </div>
