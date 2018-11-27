@@ -1,11 +1,58 @@
-{{!-- ==================================================== --}}
-{{!-- BookReporter :: A research project note organizer and composer --}}
-{{!-- MVC with MySQL, Node, Express, Handlebars and Sequelize. --}}
-{{!-- ©2018 Nicholas Angelo Batten, Ryan Case, Melissa Derricott, Alex Silvester, Richard Trevillian --}}
-{{!-- University of Richmond (Virginia) --}}
-{{!-- Full Stack Developer Bootcamp (July 2018) --}}
-{{!-- ==================================================== --}}
-{{!-- wordprocessor.handlebars --}}
-{{!-- htmlRoutes.js renders a Handlebars view for the Project's content text editor --}}
-{{!-- when finished, also incorporate the code into workspace.handlebars --}}
-{{!-- ==================================================== --}}
+{{!-- ==================================================== --}} {{!-- BookReporter :: A research project note organizer and
+composer --}} {{!-- MVC with MySQL, Node, Express, Handlebars and Sequelize. --}} {{!-- ©2018 Nicholas Angelo Batten, Ryan
+Case, Melissa Derricott, Alex Silvester, Richard Trevillian --}} {{!-- University of Richmond (Virginia) --}} {{!-- Full
+Stack Developer Bootcamp (July 2018) --}} {{!-- ==================================================== --}} {{!-- wordprocessor.handlebars
+--}} {{!-- htmlRoutes.js renders a Handlebars view for the Project's content text editor --}} {{!-- when finished, also incorporate
+the code into workspace.handlebars --}} {{!-- ==================================================== --}}
+
+<!-- PAGE HEADER WITH LOGO  -->
+<div class="page-header">
+    <div>
+        <img id="logo" class="img-fluid" alt="Responsive image" src="/images/takeNote.png">
+    </div>
+</div>
+<!-- START COL AND ROW CONTAINER -->
+<div class="container">
+
+    <div class="row">
+        <div id="textConatiner" class="col-sm-8">
+            <!-- QUILL TOOLBAR -->
+            <div id="toolbar" class="tools">
+            </div>
+
+            <!-- QUILL EDITOR ... DRAG AND DROP EVENT HANDLERS TAGGED INLINE -->
+            <div id="editor">
+                <div ondrop="drop(event, target)" ondragover="allowDrop(event)"></div>
+            </div>
+            <!-- BTN TO SAVE PROJECT -->
+            <button class="btn-primary" id="saveProject">Save</button>
+        </div>
+
+        <!-- TOPICS AND RESOURCES COL -->
+        <div id="resources" class="col-sm-4" data-hide="true">
+            <!-- NOTES BTN ONCLICK SHOWS LIST OF TOPICS -->
+            <button id="viewNotes">Notes</button>
+
+            <div id="resourceBlock">
+                <h3>Topics</h3>
+                <ul class="list-group">
+                    {{#each topic}} 
+                    {{/each}}
+                </ul>
+                <h3>Resources</h3>
+                <div draggable="true" ondragstart="drag(event)">
+                    <ul class="list-group">
+                        {{#each resource}} 
+                        {{/each}}
+                    </ul>
+                </div>
+
+                <div class="close">X</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include the Quill library -->
+    <script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
+    <!-- JAVASCRIPT -->
+    <script type="text/javascript" src="/js/wordProcessor.js"></script>
