@@ -11,3 +11,19 @@
 
 // GET all users (compare with entered user name; if match, load user's projects page)
 // POST new user
+
+app.get("/api/:user/", function(req, res) {
+    db.Topic.findAll({ where: { ProjectId: req.params.project } }).then(function(dbTopics) {
+      // console.log("topicName: " + dbTopics[0].dataValues.topicName);
+      // console.log("topic id: " + dbTopics[0].dataValues.id);
+      res.json(dbTopics);
+    });
+  });
+
+  app.get("/api/:user/:project/", function(req, res) {
+    db.Topic.findAll({ where: { ProjectId: req.params.project } }).then(function(dbTopics) {
+      // console.log("topicName: " + dbTopics[0].dataValues.topicName);
+      // console.log("topic id: " + dbTopics[0].dataValues.id);
+      res.json(dbTopics);
+    });
+  });

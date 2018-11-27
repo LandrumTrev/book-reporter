@@ -9,115 +9,270 @@
 // DOM event handlers for workspace.handlebars page view
 // ====================================================
 
-// jQuery calls to workspaceApiRoutes.js
+// jQuery calls to wsApiRoutes.js:
 
-// GET all topics for project
-// GET all resources for each topic
-// POST new topic for project
-// POST new resource for each topic
-// PUT change name of a topic
-// PUT change project assignment of topic (?)
-// PUT change name of a resource
-// PUT change content of a resource
-// PUT change topic assignment of a resource (?)
+// GET all topics for project - DONE (see wsHtmlRoutes.js)
+// GET all resources for each topic - DONE (see wsHtmlRoutes.js)
 
-// console.log("workSpace.js online");
+// POST new topic for project - DONE
+// POST new resource name for each topic - DONE
+
+// DELETE a topic from project - DONE
+// DELETE a resource from topic - DONE
+
+// PUT change content of a resource - DONE
+// PUT change name of a topic - DONE
+// PUT change name of a resource - DONE
+
 
 // start jQuery wrapper function
-$(function() {
-  // pass variable for userId from signin page
-  var userId = 1;
-  // pass variable for projectId from myProjects page
-  var projectId = 1;
+$(document).ready(function () {
 
-  // event handler to call apiRoute to get all Topics in Project
-  $("#topics_button").on("click", function(event) {
-    event.preventDefault;
+  // ==========================================================
 
-    // call workspaceApiRoutes for Topics
-    $.ajax({
-      url: "api/" + userId + "/" + projectId + "/topics",
-      type: "GET"
-    }).then(function(topics) {
-      // console.log(topics);
+  // get the Project ID for this page from the last char in the current URL
+  var thisURL = window.location.href;
+  // console.log(thisURL);
+  var projectId = thisURL[thisURL.length - 1];
+  // console.log(projectId);
 
-      // FOR each Topic returned in (topics),
-      for (let i = 0; i < topics.length; i++) {
-        var topicName = topics[i].topicName;
-        var topicId = topics[i].id;
-        // console.log(topicName + " - id: " + topicId);
+  // ==========================================================
 
-        // create a Topic list item id="topic1"
-        var topicLI = $("<a id='topic" + topicId + "' href='#' class='list-group-item list-group-item-action'></a>");
-        // and .append to it an h5 to display the topicName
-        topicLI.append("<h5 class='mb-0'>" + topicName + "</h5>");
-        // and create a <div> to hold all that Topics Resources
-        var resourceGroup = $("<div id='topic" + topicId + "resources' class='list-group'></div>");
-        // and .append that Resource container <div> to the Topic list item
-        topicLI.append(resourceGroup);
+  // event listener for the "Add Topic" button and input field, calls addTopic() function
+  $(document).on("click", "#add-topic-button", addTopic);
 
-        // then async call workspaceApiRoutes for Resources of that Topic
-        $.ajax({
-          url: "api/" + userId + "/" + projectId + "/" + topicId + "/resources",
-          type: "GET"
-        }).then(function(resources) {
-          // console.log(resources);
 
-          // and for each Resource returned for that Topic,
-          for (let j = 0; j < resources.length; j++) {
-            console.log(resources[j]);
-            var resourceName = resources[j].resourceName;
-            var resourceId = resources[j].id;
-            var resourceTopic = resources[j].TopicId;
-            console.log(resourceName + " - id: " + resourceId);
+  // function called by event handler for the "Add Topic" button and input field
+  function addTopic() {
+    var newTopic = $("#add-topic-name").val().trim();
+    // console.log(newTopic);
 
-            // create a Resource list item with id="resource1"
-            var resourceItem = $("<div id='resource" + resourceId + "' class='list-group-item list-group-item-action'></div>");
-            // and .append to it an h6 to display the resourceName
-            resourceItem.append("<h6 class='mb-0'>" + resourceName + "</h6>");
+    // POST call to wsApiRoutes /api/:project/:topicname
+    $.post("/api/" + projectId + "/" + newTopic, function () {
+      // reload the page to get updated Project with new Topic added
+      location.reload(true);
+    });
+  }
 
-            // and append the Resource list item to the resourceGroup container for that Topic
-            $("#topic" + resourceTopic).append(resourceItem);
-          }
-        }); // end Resources AJAX
+  // ==========================================================
 
-        $("#topics_display").append(topicLI);
-      } // end Topic FOR LOOP
-    }); // end Topics AJAX
-  }); // end #topics_button event handler
+  // event listener for the .delete-topic button
+  $(document).on("click", ".delete-topic", deleteTopic);
 
-  // SAMPLES BELOW: NOT FOR BOOK-REPORTER
-  // ========================================================
 
-  // EVENT HANDLER FOR .change-status BUTTON
-  $(".change-status").on("click", function(event) {
-    // variable for the data-id="" property of THIS button
-    // which is set to the item's db id: number by Handlebars
-    var id = $(this).data("id");
+  // called by .delete-topic button click handler
+  function deleteTopic() {
 
-    // variable for the data-newstatus="" property of THIS button
-    // which is set as the item's database value of done: by Handlebars
-    // NOTE: Handlebars has swapped the true|false value of done: in the rendered HTML
-    // in order for it to be grabbed here and set as the new value in the database
-    var newStatus = $(this).data("newstatus");
+    var confirmDelete = confirm("Are you sure you want to delete this Topic?");
 
-    // create an object which is {done: 0 | false} or {done: 1 | true},
-    // based on the SWAPPED done: value in the rendered HTML
-    var newStatusState = {
-      done: newStatus
+    if (confirmDelete === true) {
+
+      // get the Topic id from the data-topic="" HTML property of the button
+      var thisTopicID = $(this).attr('data-topic');
+      // console.log(thisTopicID);
+
+      // DELETE call to wsApiRoutes /api/topics/:id
+      $.ajax("/api/topics/" + thisTopicID, {
+        type: "DELETE"
+      }).then(
+        function () {
+          // reload the page to get updated Project with Topic deleted
+          location.reload(true);
+        });
+    }
+  }
+
+  // ==========================================================
+
+
+  // event listener for clicking on a Topic Name input
+  // works with updateTopic event listener
+  $(document).on("focus", ".tname", editTopic);
+
+
+  // called by clicking into the input field of a Topic Name .tname
+  // works with updateTopic() on blur
+  function editTopic() {
+    // create a variable with value of element's placeholder="" content
+    var topicNamePlaceholder = $(this).attr('placeholder');
+    // then make the value="" (the text of textarea) the text in the placeholder
+    $(this).val(topicNamePlaceholder);
+  }
+
+  // +++++++++++
+
+  // event listener for clickout out of a Topic Name input
+  // works with editTopic event listener
+  $(document).on("blur", ".tname", updateTopic);
+
+
+  // called by clicking out of the input field of a Topic Name .tname
+  // works with editTopic() on focus
+  function updateTopic() {
+
+    // get the Topic id from the data-topic="" HTML property of the input
+    var topicID = $(this).attr('data-topic');
+    // console.log(topicID);
+    // get the new topic name from the current text in the input
+    var newTopicName = $(this).val().trim();
+    // console.log(newTopicName);
+    // create an object to send as data: (the req.body) with the new Topic name
+    var putTopicName = {
+      topicName: newTopicName
     };
 
     // Send the PUT request with the swapped value as the new value in database
-    $.ajax("/api/items/" + id, {
+    $.ajax("/api/topics/" + topicID, {
       type: "PUT",
-      data: newStatusState
-    }).then(function() {
-      console.log("changed status to", newStatus);
-      // Reload the page to get the updated list
-      $("#new-item").val("");
+      data: putTopicName
+    }).then(function (result) {
+      // console.log(result);
       location.reload();
     });
-  });
+  }
 
-  // ========================================================
-}); // end jQuery wrapper function
+  // ==========================================================
+
+  // event listener for the Add Resource "+" button and input field, calls addResource() function
+  $(document).on("click", ".add-resource", addResource);
+
+
+  // called by the event handler for .add-resource buttons
+  function addResource() {
+
+    // get the Topic id for the new resource from data-topic="" property of button
+    var thisTopicID = $(this).attr('data-topic');
+    // console.log(thisTopicID);
+
+    // get the new Resource name from the input field whose ID name includes this Topic ID
+    var newResourceName = $("#add-resource-name-" + thisTopicID).val().trim();
+    // console.log(newResourceName);
+
+    // POST to wsApiRoutes /api/resources/:topicid/:resourcename
+    $.post("/api/resources/" + thisTopicID + "/" + newResourceName, function (newResource) {
+      // reload the page to to show the new Resource added
+      // console.log(newResource);
+      location.reload(true);
+    });
+  }
+
+  // ==========================================================
+
+  // event listener for the Delete Resource "x" button
+  $(document).on("click", ".delete-resource", deleteResource);
+
+
+  // called by the .delete-resource buttons event handler
+  function deleteResource() {
+
+    var confirmDelete = confirm("Are you sure you want to delete this Resource?");
+
+    if (confirmDelete == true) {
+
+      var thisResourceID = $(this).attr('data-resource');
+      // console.log(thisResourceID);
+
+      // DELETE to wsApiRoutes /api/resources/:id
+      $.ajax("/api/resources/" + thisResourceID, {
+        type: "DELETE"
+      }).then(
+        function (result) {
+          location.reload(true);
+        });
+    }
+  }
+
+  // ==========================================================
+
+
+  // event listener for clicking on a Resource Name input
+  // works with updateResourceName event hander
+  $(document).on("focus", ".rname", editResourceName);
+
+
+  // called by clicking into the input field of a Topic Name .tname
+  // works with updateResourceName() on blur
+  function editResourceName() {
+    // create a variable with value of element's placeholder="" content
+    var resourceNamePlaceholder = $(this).attr('placeholder');
+    // then make the value="" (the input text of textarea) the placeholder content
+    $(this).val(resourceNamePlaceholder);
+  }
+
+  // +++++++++++
+
+  // event listener for clickout out of a Resource Name input
+  // works with editResourceName event handler
+  $(document).on("blur", ".rname", updateResourceName);
+
+
+  // called by clicking out of the input field of a Topic Name .tname
+  // works with editResourceName() on focus
+  function updateResourceName() {
+
+    var resourceID = $(this).attr('data-resource');
+    // console.log(resourceID);
+    var newResourceName = $(this).val().trim();
+    // console.log(newResourceName);
+    var putResourceName = {
+      resourceName: newResourceName
+    };
+
+    // PUT to wsApiRoutes /api/resource-name/:id
+    $.ajax("/api/resource-name/" + resourceID, {
+      type: "PUT",
+      data: putResourceName
+    }).then(function (result) {
+      // console.log(result);
+      location.reload();
+    });
+  }
+
+  // ==========================================================
+
+  // event listener for clicking into a Resource Content textarea
+  $(document).on("focus", ".rescont", editResource);
+
+
+  // function places placeholder="" content into value="" of Resource Content field
+  function editResource() {
+    // create a variable with value of element's placeholder="" content
+    var resContPlaceholder = $(this).attr('placeholder');
+    // then make the value="" (the text of the textarea) the placeholder content
+    $(this).val(resContPlaceholder);
+  }
+
+  // +++++++++++
+
+  // event listener for clickout out of a Resource Content textarea
+  $(document).on("blur", ".rescont", updateResource);
+
+
+  // function to update the db resourceContent from the current field contents
+  function updateResource() {
+
+    // get id of this Resource from textarea's data-resource="" property
+    var resourceID = $(this).attr('data-resource');
+    // console.log(resourceID);
+
+    // get the current text content of the textarea
+    var thisResVal = $(this).val().trim();
+    // console.log(thisResVal);
+
+    // and make an object with the current text to send to wsApiRoutes as data:
+    var putResVal = {
+      resourceContent: thisResVal
+    };
+
+    // PUT to wsApiRoutes /api/resource-content/:id
+    $.ajax("/api/resource-content/" + resourceID, {
+      type: "PUT",
+      data: putResVal
+    }).then(function (result) {
+      // console.log(result);
+      location.reload();
+    });
+  }
+
+  // ==========================================================
+}); // end jQuery wrapper

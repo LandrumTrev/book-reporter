@@ -1,80 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Workspace Working Doc HTML</title>
 
-    <!-- FONT AWESOME -->
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-      integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
-      crossorigin="anonymous"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Workspace Working Doc HTML</title>
 
-    <!-- BOOTSTRAP CSS -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-      crossorigin="anonymous"
-    />
+  <!-- FONT AWESOME -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+    crossorigin="anonymous" />
 
-    <!-- SITE STYLESHEET -->
-    <link rel="stylesheet" href="styles/styles.css" />
-  </head>
-  <body>
-    <div class="container">
-      <h4>Workspace Demo Page</h4>
-      <button id="topics_button" class="btn btn-primary">Get Topics</button>
-      <br />
-      <br />
+  <!-- BOOTSTRAP CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous" />
 
-      <div id="topics_display" class="list-group">
+  <!-- SITE STYLESHEET -->
+  <link rel="stylesheet" href="styles/styles.css" />
+</head>
 
-        <!-- <a href="#" class="list-group-item list-group-item-action">
-          <h5 class="mb-0">List group item heading</h5>
-        </a>
+<body>
 
-        <a href="#" class="list-group-item list-group-item-action">
-          <h5 class="mb-0">List group item heading</h5>
-        </a>
 
-        <a href="#" class="list-group-item list-group-item-action">
-          <h5 class="mb-0">List group item heading</h5>
-        </a>
 
-        <a href="#" class="list-group-item list-group-item-action">
-          <h5 class="mb-0">List group item heading</h5>
-        </a> -->
 
+  <div class="container">
+
+    <br>
+    <br>
+
+    <!-- <textarea class="form-control" rows="3"></textarea> -->
+
+    <!-- ADD NEW TOPIC INPUT FIELD AND BUTTON -->
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <button class="btn btn-outline-secondary" type="button" id="add-topic-button">Add Topic</button>
       </div>
+      <input id="add-topic-name" type="text" class="form-control" placeholder="add a new Topic to this Project">
     </div>
 
-    <!-- JQUERY -->
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.js"
-      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-      crossorigin="anonymous"
-    ></script>
+    <br>
+    <br>
 
-    <!-- POPPER JS for BOOTSTRAP -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-      crossorigin="anonymous"
-    ></script>
+    <!-- DIV TO FILL WITH TOPICS AND RESOURCES -->
+    <div id="topics_display" class="list-group"></div>
 
-    <!-- BOOTSTRAP JS -->
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-      crossorigin="anonymous"
-    ></script>
+  </div>
 
-    <!-- EVENT HANDLERS -->
-    <script src="js/workSpace.js"></script>
-  </body>
+
+
+  <!-- JQUERY -->
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+
+  <!-- POPPER JS for BOOTSTRAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+
+  <!-- BOOTSTRAP JS -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+
+  <!-- EVENT HANDLERS -->
+  <script src="js/workSpace.js"></script>
+</body>
+
 </html>

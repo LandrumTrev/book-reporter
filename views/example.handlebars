@@ -1,21 +1,31 @@
-{{!-- SAMPLE PAGE ONLY : NOT FOR book-reporter --}}
+{{!-- example.handlebars is the page template called by clicking on a Text list link in index --}}
+{{!-- htmlRoutes finds one matching row, and calls Handlebars to render this template --}}
+{{!-- passes in the data of that row as {{example}} --}}
 
 <div class="container">
   <div class="row">
     <div class="col-8 offset-2">
+
       <div class="card mt-4">
         <div class="card-body">
+
           <h5 class="card-title">Example</h5>
-          <p>
-            <strong>ID</strong>: {{example.id}}</p>
-          <p>
-          <p>
-            <strong>Text</strong>: {{example.text}}</p>
-          <p>
-            <strong>Description:</strong> {{example.description}}</p>
-            <a href="/">← Back To Home</a>
+
+          {{!-- write out the .id of {{example}} data --}}
+          <p><strong>ID</strong>: {{example.id}}</p>
+
+          {{!-- write out the .text of {{example}} data --}}
+          <p><strong>Text</strong>: {{example.text}}</p>
+
+          {{!-- write out the .description of {{example}} data --}}
+          <p><strong>Description:</strong> {{example.description}}</p>
+
+          {{!-- link back to index by calling "/" via htmlRoutes --}}
+          <a href="/">← Back To Home</a>
+
         </div>
       </div>
+
     </div>
   </div>
 </div>

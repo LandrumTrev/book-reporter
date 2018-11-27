@@ -9,7 +9,7 @@
 // Sequelize uses to create "Topics" (pluralized) table
 // ====================================================
 
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
   var Topic = sequelize.define("Topic", {
     topicName: {
       type: DataTypes.STRING,
@@ -17,12 +17,15 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-  Topic.associate = function(models) {
+  Topic.associate = function (models) {
     Topic.belongsTo(models.Project, {
       onDelete: "CASCADE",
       foreignKey: {
         allowNull: false
       }
+    }),
+    Topic.hasMany(models.Resource, {
+      onDelete: "CASCADE"
     });
   };
 

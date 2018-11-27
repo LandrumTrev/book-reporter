@@ -8,36 +8,42 @@
 {{!-- myprojects.handlebars --}}
 {{!-- htmlRoutes.js renders a Handlebars view of all the logged in user's projects --}}
 {{!-- ==================================================== --}}
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <h1 class="title text-center">My Projects</h1>
-        </div>
-    </div>
-    <div class="row myProjects p-5">
-        <div class="col-md-12">
-            <div class="message text-center mx-auto">
-                <h4>You have no submitted projects yet</h4>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <h3>Start a New Project</h3>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
+
+<div class="row">
+  <div class="col-lg-4">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-warning" id="sign-in" data-toggle="modal" data-target="#exampleModal">
+      Your Name Here
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Please enter your name 😊</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
             <form>
-                <div class="form-group">
-                    <label for="projectType">What kind of project are you working on?</label>
-                    <select class="form-control" id="projectType">
-                        <option>Book Report</option>
-                        <option>Web Application</option>
-                    </select>
-                </div>
-                <input type="submit" class="btn btn-primary btn-lg text-center" id="sign-in">
+              <div class="col-md-4 mb-3">
+                <input type="text" class="form-control" id="userNameFirst" placeholder="First name" style="color:orange"
+                  value="" required>
+              </div>
+
+              <p style="color:orange">Click any icon to select your preference after entering
+                your name.</p>
             </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-warning" id="log-in">Submit</button>
+          </div>
         </div>
+      </div>
     </div>
-</div>
+    <h2 class="hello">Hello: <span id="username"></span>!</h2>
+  </div>
