@@ -15,7 +15,7 @@ var db = require("../models");
 
 module.exports = function(app) {
   app.get("/api/user", function(req, res) {
-    db.Project.findAll({}).then(function(dbUsers) {
+    db.User.findOne().then(function(dbUsers) {
       res.json(dbUsers);
     });
   });
@@ -30,9 +30,9 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/user/:id", function(req, res) {
+  app.get("/api/user/:username", function(req, res) {
     db.User.findOne({
-      where: { id: req.params.id }
+      where: { userName: req.params.username }
     }).then(function(dbUser) {
       res.json(dbUser);
     });
@@ -46,12 +46,11 @@ module.exports = function(app) {
   //   });
   // });
 
-  app.post("/api/user/:user", function(req,res) {
+  app.post("/api/user/:username", function(req,res) {
     db.User.create({
-      userName: req.params.user
+      userName: req.params.username
     }).then(function(dbUser) {
-      // console.log(dbUser);
-      // redirect
+      res.json(dbUser)
     });
   });
 };
