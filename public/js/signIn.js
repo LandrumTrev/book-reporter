@@ -14,16 +14,16 @@
 // POST new user ($.post() to signinApiRoutes.js)
 
 var username;
-
-console.log("console.log working");
 signIn();
+
+
 //Signing in
 function signIn() {
   // No UserName in Local Storage
   if (localStorage.getItem("username") === null) {
     console.log("no username");
     $(".hello").hide();
-    $("#log-in").click(function() {
+    $("#log-in").click(function () {
       username = $("#userNameFirst").val();
       console.log(username);
       localStorage.setItem("username", username);
@@ -31,10 +31,9 @@ function signIn() {
       $("#sign-in").hide();
       $(".hello").show();
 
-      // POST API call new username added to database
     });
   }
-  //UserName in Local Storage
+  //UserName is in Local Storage
   else {
     $("#sign-in").hide();
     username = localStorage.getItem("username");
@@ -42,33 +41,57 @@ function signIn() {
     $("#username").empty();
     $(".hello").show();
     $("#username").text(username);
+    getUserId(username);
+
+    //Ryan create a div that displays "If not" + username + " ,click here"
+    // When the div is clicked (on.click) run this code:
+    //localStorage.removeItem(username);
   }
 }
-  $(document).ready(function () {
-    getUserProjects();
-    getUserNameId();
-  });
 
-
-function getUserProjects() {
+function getUserId(username) {
   $.ajax({
     type: "GET",
-    url: "/api/1/projects"
+    url: "/api/user/" + username
   }).then(function(result) {
-    console.log(result[0]);
-    $(".projects").append(result[0].projectName);
-});
-}
-
-function getUserNameId(){
-  $.ajax({
-    type:"GET",
-    url: "/api/user/1"
-  }).then(function(result){
-    console.log(result);
-    // for(var i = 0; i < result.length; i++){
-    //   console.log(result[i]);
-    // }
+    console.log(result.id);
+    getUserProjects(result.id);
   });
-
 }
+
+function getUserProjects(userId) {
+  $.ajax({
+    type: "GET",
+    url: "/api/" + userId + "/projects"
+  }).then(function(result) {
+    console.log(result);
+    $(".projects").append(result[0].projectName);
+  });
+}
+
+function postUserNameId(username) {
+  $.ajax({
+    type: "POST",
+    url: "/api/users/" + username
+  }).then(function(result) {
+    console.log(result);
+    getUserId(username);
+  });
+}
+
+function postNewProject(username) {
+  $.ajax({
+    type: "GET",
+    url: "/api/user/" + username
+  }).then(function(result) {
+    var projectName = $("#projectName").value().trim();
+    $.ajax({
+      type: "POST",
+      url: "/api/user/" + result.id + "/" + projectName
+    }).then(function(result) {
+      console.log(result);
+    });
+  });
+}
+
+// Ryan: Create an On click function for submitting new project, that calls postNewProject(username)

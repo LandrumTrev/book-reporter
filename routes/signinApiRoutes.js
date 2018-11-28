@@ -14,12 +14,6 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  app.get("/api/user", function(req, res) {
-    db.Project.findAll({}).then(function(dbUsers) {
-      res.json(dbUsers);
-    });
-  });
-
   app.get("/api/:user/projects", function(req, res) {
     console.log("params" + req.params);
     db.Project.findAll({
@@ -30,28 +24,36 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/user/:id", function(req, res) {
+  app.get("/api/user/:username", function(req, res) {
     db.User.findOne({
-      where: { id: req.params.id }
+      where: { userName: req.params.username }
     }).then(function(dbUser) {
       res.json(dbUser);
     });
   });
 
-  // app.get("/api/:user/:project/", function(req, res) {
-  //   db.Project.findAll({
-  //     where: { ProjectId: req.params.project }
-  //   }).then(function(dbProject) {
-  //     res.json(dbProject);
-  //   });
-  // });
+  app.post("/api/user/:userid/:projectname", function(req, res) {
+    db.Project.create({
+      projectName: req.params.projectname,
+      UserId: req.params.userid
+    })
+      .then(function(dbProject) {
+        console.log(dbProject);
+      })
+      .catch(function(err) {
+        console.log(err.message);
+      });
+  });
 
-  app.post("/api/user/:user", function(req,res) {
-    db.User.create({
-      userName: req.params.user
-    }).then(function(dbUser) {
-      // console.log(dbUser);
-      // redirect
-    });
+  app.post("/api/users/:username", function(req, res) {
+    db.User.findOrCreate({ where: { userName: req.params.username } })
+      .then(function(dbUser) {
+        console.log(dbUser);
+        console.log(res);
+        res.json(dbUser);
+      })
+      .catch(function(err) {
+        console.log(err.message);
+      });
   });
 };
