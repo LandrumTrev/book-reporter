@@ -11,19 +11,47 @@
 
 // GET all users (compare with entered user name; if match, load user's projects page)
 // POST new user
+var db = require("../models");
 
-app.get("/api/:user/", function(req, res) {
-    db.Topic.findAll({ where: { ProjectId: req.params.project } }).then(function(dbTopics) {
-      // console.log("topicName: " + dbTopics[0].dataValues.topicName);
-      // console.log("topic id: " + dbTopics[0].dataValues.id);
-      res.json(dbTopics);
+module.exports = function(app) {
+  app.get("/api/user", function(req, res) {
+    db.Project.findAll({}).then(function(dbUsers) {
+      res.json(dbUsers);
     });
   });
 
-  app.get("/api/:user/:project/", function(req, res) {
-    db.Topic.findAll({ where: { ProjectId: req.params.project } }).then(function(dbTopics) {
-      // console.log("topicName: " + dbTopics[0].dataValues.topicName);
-      // console.log("topic id: " + dbTopics[0].dataValues.id);
-      res.json(dbTopics);
+  app.get("/api/:user/projects", function(req, res) {
+    console.log("params" + req.params);
+    db.Project.findAll({
+      where: { UserId: req.params.user }
+    }).then(function(dbProject) {
+      // res.send(req.params.UserId);
+      res.json(dbProject);
     });
   });
+
+  app.get("/api/user/:id", function(req, res) {
+    db.User.findOne({
+      where: { id: req.params.id }
+    }).then(function(dbUser) {
+      res.json(dbUser);
+    });
+  });
+
+  // app.get("/api/:user/:project/", function(req, res) {
+  //   db.Project.findAll({
+  //     where: { ProjectId: req.params.project }
+  //   }).then(function(dbProject) {
+  //     res.json(dbProject);
+  //   });
+  // });
+
+  app.post("/api/user/:user", function(req,res) {
+    db.User.create({
+      userName: req.params.user
+    }).then(function(dbUser) {
+      // console.log(dbUser);
+      // redirect
+    });
+  });
+};

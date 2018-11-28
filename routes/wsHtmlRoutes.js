@@ -22,7 +22,6 @@ var db = require("../models");
 // all others route, redirects either to home page, or 404 page
 
 module.exports = function (app) {
-
   // Load the workspace page by project id
   app.get("/:id", function (req, res) {
     db.Project.findOne({

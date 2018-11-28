@@ -33,10 +33,12 @@ app.set("view engine", "handlebars");
 
 // Routes
 // update to include individual page ______apiRoutes.js
+require("./routes/signinApiRoutes")(app);
 require("./routes/wsHtmlRoutes")(app);
 require("./routes/wsApiRoutes")(app);
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
+
 
 var syncOptions = { force: false };
 // var syncOptions = { force: true };

@@ -19,20 +19,22 @@ console.log("console.log working");
 signIn();
 //Signing in
 function signIn() {
+  // No UserName in Local Storage
   if (localStorage.getItem("username") === null) {
-      console.log("no username");
+    console.log("no username");
     $(".hello").hide();
-    $("#log-in").click(function () {
+    $("#log-in").click(function() {
       username = $("#userNameFirst").val();
       console.log(username);
       localStorage.setItem("username", username);
       $("#username").text(username);
       $("#sign-in").hide();
       $(".hello").show();
-// POST API call new username added to database
 
+      // POST API call new username added to database
     });
   }
+  //UserName in Local Storage
   else {
     $("#sign-in").hide();
     username = localStorage.getItem("username");
@@ -40,16 +42,33 @@ function signIn() {
     $("#username").empty();
     $(".hello").show();
     $("#username").text(username);
-
-    // add conditional, not username and delete localStorage
-// GET API call for localStorage username
-  
-
-
-
-
-
-      
-    };
-
   }
+}
+  $(document).ready(function () {
+    getUserProjects();
+    getUserNameId();
+  });
+
+
+function getUserProjects() {
+  $.ajax({
+    type: "GET",
+    url: "/api/1/projects"
+  }).then(function(result) {
+    console.log(result[0]);
+    $(".projects").append(result[0].projectName);
+});
+}
+
+function getUserNameId(){
+  $.ajax({
+    type:"GET",
+    url: "/api/user/1"
+  }).then(function(result){
+    console.log(result);
+    // for(var i = 0; i < result.length; i++){
+    //   console.log(result[i]);
+    // }
+  });
+
+}
