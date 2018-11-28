@@ -13,6 +13,7 @@
 
 // GET all topics for project - DONE (see wsHtmlRoutes.js)
 // GET all resources for each topic - DONE (see wsHtmlRoutes.js)
+// GET projectContent Quill editor text from db - DONE
 
 // POST new topic for project - DONE
 // POST new resource name for each topic - DONE
@@ -23,6 +24,7 @@
 // PUT change content of a resource - DONE
 // PUT change name of a topic - DONE
 // PUT change name of a resource - DONE
+// PUT updated projectContent Quill editor text to db - DONE
 
 
 var db = require("../models");
@@ -37,6 +39,20 @@ module.exports = function (app) {
   // Project object with all Topics and Resources
 
   // ========================================================
+
+  // get the Project's projectContent Quill JSON data
+  app.get("/api/projects/:id", function (req, res) {
+    db.Project.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(function (dbProject) {
+      console.log(dbProject);
+      res.json(dbProject);
+    });
+  }); // end app.get
+
+  // ========================================================
   // ========================================================
 
 
@@ -44,7 +60,7 @@ module.exports = function (app) {
   // ========================================================
 
   // create a new Topic in the Project
-  app.post("/api/:project/:topicname", function (req, res) {
+  app.post("/api/projects/:project/:topicname", function (req, res) {
     // console.log(req.params.project);
     // console.log(req.params.topicname);
     db.Topic.create({
@@ -122,6 +138,25 @@ module.exports = function (app) {
 
 
   // UPDATE (PUT) ROUTES
+  // ========================================================
+
+  // updates the Quill wordprocessor Project Content
+  app.put("/api/projects/:id", function (req, res) {
+    console.log("route request:" + req);
+    db.Project.update({
+        projectContent: req.body.projectContent
+      }, {
+        where: {
+          id: req.params.id
+        }
+      }).then(function (dbProjectContent) {
+        res.json(dbProjectContent);
+      })
+      .catch(function (err) {
+        res.json(err);
+      });
+  });
+
   // ========================================================
 
   // updates a Resource Name
