@@ -15,7 +15,7 @@ var db = require("../models");
 
 module.exports = function(app) {
   app.get("/api/user", function(req, res) {
-    db.User.findOne({where:{ userName} }).then(function(dbUsers) {
+    db.User.findOne().then(function(dbUsers) {
       res.json(dbUsers);
     });
   });

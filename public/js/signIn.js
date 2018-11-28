@@ -54,7 +54,7 @@ function getUserId(username) {
   }).then(function(result) {
     console.log(result.id);
     getUserProjects(result.id);
-    console.
+    
   });
 }
 
