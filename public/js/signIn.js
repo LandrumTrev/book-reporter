@@ -30,6 +30,7 @@ function signIn() {
       $("#username").text(username);
       $("#sign-in").hide();
       $(".hello").show();
+      getUserId(username);
 
       // POST API call new username added to database
     });
@@ -42,33 +43,38 @@ function signIn() {
     $("#username").empty();
     $(".hello").show();
     $("#username").text(username);
+    getUserId(username);
   }
 }
-  $(document).ready(function () {
-    getUserProjects();
-    getUserNameId();
-  });
 
-
-function getUserProjects() {
+function getUserId(username) {
   $.ajax({
     type: "GET",
-    url: "/api/1/projects"
+    url: "/api/user/" + username
   }).then(function(result) {
-    console.log(result[0]);
-    $(".projects").append(result[0].projectName);
-});
+    console.log(result.id);
+    getUserProjects(result.id);
+    console.
+  });
 }
 
-function getUserNameId(){
+function getUserProjects(userId) {
   $.ajax({
-    type:"GET",
-    url: "/api/user/1"
-  }).then(function(result){
+    type: "GET",
+    url: "/api/" + userId + "/projects"
+  }).then(function(result) {
     console.log(result);
-    // for(var i = 0; i < result.length; i++){
-    //   console.log(result[i]);
-    // }
+    $(".projects").append(result[0].projectName);
+  });
+}
+
+function postUserNameId(username) {
+  $.ajax({
+    type: "POST",
+    url: "/api/user/" + username
+  }).then(function(result) {
+    console.log(result);
   });
 
 }
+
