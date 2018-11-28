@@ -23,6 +23,8 @@ function signIn() {
   if (localStorage.getItem("username") === null) {
     console.log("no username");
     $(".hello").hide();
+    $(".newProject").hide();
+    $(".myProjects").hide();
     $("#log-in").click(function() {
       username = $("#userNameFirst").val();
       console.log(username);
@@ -30,6 +32,8 @@ function signIn() {
       $("#username").text(username);
       $("#sign-in").hide();
       $(".hello").show();
+      $(".newProject").show();
+      $(".myProjects").show();
       getUserId(username);
 
       // POST API call new username added to database
@@ -42,6 +46,8 @@ function signIn() {
     console.log(username);
     $("#username").empty();
     $(".hello").show();
+    $(".newProject").show();
+    $(".myProjects").show();
     $("#username").text(username);
     getUserId(username);
   }
