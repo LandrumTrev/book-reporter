@@ -55,8 +55,22 @@ function getUserProjects() {
     type: "GET",
     url: "/api/1/projects"
   }).then(function(result) {
-    console.log(result[0]);
-    $(".projects").append(result[0].projectName);
+    console.log(result);
+    for (i=0; i < result.length; i++){
+      var projectUrl = result[i].id
+      $(".projects").append(`
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body text-center">
+            <h3 class="card-title text-center">${result[i].projectName}</h3>
+            <p class="card-text text-center">Click the button below to visit this project</p>
+            <a href="/${projectUrl}" class="btn btn-primary text-center">Open</a>
+          </div>
+        </div>
+      </div>
+      `)
+    }
+
 });
 }
 
