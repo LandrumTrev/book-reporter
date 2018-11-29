@@ -13,6 +13,7 @@
 
 // GET all topics for project - DONE (see wsHtmlRoutes.js)
 // GET all resources for each topic - DONE (see wsHtmlRoutes.js)
+// GET projectContent Quill editor text from db - DONE
 
 // POST new topic for project - DONE
 // POST new resource name for each topic - DONE
@@ -23,11 +24,64 @@
 // PUT change content of a resource - DONE
 // PUT change name of a topic - DONE
 // PUT change name of a resource - DONE
+// PUT updated projectContent Quill editor text to db - DONE
 
 
 // start jQuery wrapper function
 $(document).ready(function () {
 
+  // ==========================================================
+  // START QUILL EDITOR FUNCTIONS
+  // ==========================================================
+
+  // on page load, run function to load projectContent from db in editor
+  $(document).ready(editorProjectContent);
+
+  // on page load, run function to load projectContent from db in editor
+  function editorProjectContent() {
+
+    // get the Project id from the editor DIV, set by Handlebars
+    var wpProjectId = $("#editor").attr("data-project");
+
+    $.ajax("/api/projects/" + wpProjectId, {
+      type: "GET",
+    }).then(function (getResult) {
+      // JSON.parse the JSON String data from Project's projectContent col
+      var jsonResult = JSON.parse(getResult.projectContent);
+      // have Quill load the parsed JSON data into the editor
+      quill.setContents(jsonResult);
+    });
+  };
+
+  // +++++++++++
+
+  $(document).on("blur", "#quillBox", updateProjectWP);
+
+  function updateProjectWP() {
+
+    // create a var for Quill grabbing current editor content
+    var delta = quill.getContents();
+
+    // and then JSON.stringify that content, 
+    // and turn it into an object to send as the body of the $.ajax PUT
+    var editorPutContent = {
+      projectContent: JSON.stringify(delta)
+    }
+
+    // get the Project id from the editor DIV, set by Handlebars
+    var wpProjectId = $("#editor").attr("data-project");
+
+    $.ajax("/api/projects/" + wpProjectId, {
+      type: "PUT",
+      data: editorPutContent
+    }).then(function (putResult) {
+      // when click outside the editor, current content now saved in db
+      // no need for a jarring reload here; all new page loads will get from db
+    });
+  };
+
+  // ==========================================================
+  // END QUILL EDITOR FUNCTIONS
   // ==========================================================
 
   // this code resizes the textarea of each Resource Content 
@@ -42,9 +96,6 @@ $(document).ready(function () {
 
     // set the height of each textarea to the scrollHeight of it's content text
     $(thisTextarea).height($("textarea")[i].scrollHeight);
-
-    // sets the default css "display:none" to all textareas after sizing them
-    // $(thisTextarea).hide();
   }
 
   // ==========================================================
@@ -69,8 +120,6 @@ $(document).ready(function () {
     // console.log(projectResourceContents);
 
     // then toggle the visibility of all Resource Content textareas
-    // $(projectResourceContents).hide();
-    // $(projectResourceContents).show();
     $(projectResourceContents).toggle();
 
   }
@@ -83,13 +132,12 @@ $(document).ready(function () {
 
   // called by handler for the .toggle-resource button to show/hide all Topic's Resources
   function showHideTopicResources() {
-    
+
     // get the Topic id from the button's data-topic=""
     var topicID = $(this).attr('data-topic');
     // console.log(topicID);
 
     // select all .rescont with a data-topic="" that matches the button's data-topic=""
-    // var topicsResourceContents = $(".rescont[data-topic='" + topicID + "']");
     var topicsResourceContents = $(".rescont[data-topic='" + topicID + "']");
     // console.log(topicsResourceContents);
 
@@ -126,7 +174,7 @@ $(document).ready(function () {
     // console.log(newTopic);
 
     // POST call to wsApiRoutes /api/:project/:topicname
-    $.post("/api/" + projectId + "/" + newTopic, function () {
+    $.post("/api/projects/" + projectId + "/" + newTopic, function () {
       // reload the page to get updated Project with new Topic added
       location.reload(true);
     });
@@ -191,9 +239,11 @@ $(document).ready(function () {
     // get the Topic id from the data-topic="" HTML property of the input
     var topicID = $(this).attr('data-topic');
     // console.log(topicID);
+
     // get the new topic name from the current text in the input
     var newTopicName = $(this).val().trim();
     // console.log(newTopicName);
+
     // create an object to send as data: (the req.body) with the new Topic name
     var putTopicName = {
       topicName: newTopicName
@@ -230,7 +280,7 @@ $(document).ready(function () {
     $.post("/api/resources/" + thisTopicID + "/" + newResourceName, function (newResource) {
       // reload the page to to show the new Resource added
       // console.log(newResource);
-      location.reload(true);
+      location.reload();
     });
   }
 
@@ -290,8 +340,10 @@ $(document).ready(function () {
 
     var resourceID = $(this).attr('data-resource');
     // console.log(resourceID);
+
     var newResourceName = $(this).val().trim();
     // console.log(newResourceName);
+
     var putResourceName = {
       resourceName: newResourceName
     };
@@ -314,8 +366,10 @@ $(document).ready(function () {
 
   // function places placeholder="" content into value="" of Resource Content field
   function editResource() {
+
     // create a variable with value of element's placeholder="" content
     var resContPlaceholder = $(this).attr('placeholder');
+
     // then make the value="" (the text of the textarea) the placeholder content
     $(this).val(resContPlaceholder);
   }
