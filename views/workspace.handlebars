@@ -14,6 +14,21 @@
 {{!-- QUILL THEME CSS --}}
 <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 
+{{!-- START PAGE CONTAINER --}}
+<div id="topbar" class="container-fluid">
+  <div id="topbar-content" class="container">
+
+    <div id="logo-box">take.<span>note</span></div>
+
+    <div id="list-togger" class="nav-thing">list</div>
+    <div id="editor-toggle" class="nav-thing">editor</div>
+    <div id="signin-link" class="nav-thing">
+      <a href="/">signin</a>
+    </div>
+
+  </div>
+</div>
+
 
 {{!-- START PAGE CONTAINER --}}
 <div id="home">
@@ -25,14 +40,11 @@
       <div class="col-12">
 
         <div id="project-info">
-          {{!-- <div id="project-info" data-project="{{project.id}}"> --}}
-          <br>
-          <strong>User ID:</strong> {{project.UserId}},
-          <strong>Project ID</strong>: {{project.id}},
-          <strong>Project Name</strong>: {{project.projectName}}
-          <br>
-          <br>
-
+          <p>
+            Project Name: <strong id="p-name">{{project.projectName}}</strong data-projectname="{{project.projectName}}">
+            |
+            User: <strong id="u-name" data-userid="{{project.UserId}}"></strong>
+          </p>
         </div>
 
       </div>
@@ -46,7 +58,8 @@
 
       {{!-- START COL FOR QUILL EDITOR --}}
       <div id="quillBox" class="col-sm-12 col-lg-8">
-        <div class="col-sm-12" data-project="{{project.id}}">
+        <div>
+          {{!-- <div class="col-sm-12" data-project="{{project.id}}"> --}}
 
           {{!-- QUILL EDITOR --}}
           <div id="editor" class="col-12" data-project="{{project.id}}">
@@ -69,18 +82,18 @@
       <div class="col-sm-12 col-lg-4">
 
         {{!-- START NEW TOPIC INPUT FIELD AND BUTTON --}}
-        <div class="input-group mb-3">
+        <div class="input-group mb-2">
 
           <div class="input-group-prepend">
-            <button class="btn btn-secondary" type="button" id="add-topic-button">
+            <button class="btn btn-secondary btn-sm" type="button" id="add-topic-button">
               +
             </button>
           </div>
 
-          <input id="add-topic-name" type="text" class="form-control" placeholder="add a new Topic to this Project">
+          <input id="add-topic-name" type="text" class="form-control form-control-sm" placeholder="add a new Topic to this Project">
 
           <div class='input-group-append'>
-            <button class='btn btn-outline-secondary toggle-all-resources' type='button' data-topic='{{id}}'>
+            <button class='btn btn-sm btn-outline-secondary toggle-all-resources' type='button' data-topic='{{id}}'>
               >
             </button>
           </div>
@@ -95,21 +108,21 @@
           {{#each project.Topics}}
 
             {{!-- START EACH TOPIC CONTAINER --}}
-            <div id='t-{{id}}' class='topicbox list-group-item list-group-item-action mb-4'>
+            <div id='t-{{id}}' class='topicbox list-group-item list-group-item-action mb-2'>
 
               {{!-- START TOPIC NAME DISPLAY-EDIT-DELETE --}}
-              <div class='input-group mb-3'>
+              <div class='input-group mb-1'>
 
                 <div class='input-group-prepend'>
-                  <button class='btn btn-danger delete-topic' type='button' data-topic='{{id}}'>
+                  <button class='btn btn-sm btn-danger delete-topic' type='button' data-topic='{{id}}'>
                     x
                   </button>
                 </div>
 
-                <input type='text' class='tname form-control' placeholder='{{topicName}}' data-topic='{{id}}'>
+                <input type='text' class='tname form-control form-control-sm' placeholder='{{topicName}}' data-topic='{{id}}'>
 
                 <div class='input-group-append'>
-                  <button class='btn btn-outline-danger toggle-topic-resources' type='button' data-topic='{{id}}'>
+                  <button class='btn btn-sm btn-outline-danger toggle-topic-resources' type='button' data-topic='{{id}}'>
                     >
                   </button>
                 </div>
@@ -118,13 +131,13 @@
               {{!-- END TOPIC NAME DISPLAY-EDIT-DELETE --}}
 
               {{!-- START ADD RESOURCE TO TOPIC FIELD AND BUTTON --}}
-              <div class='input-group mb-3'>
+              <div class='input-group mb-1'>
                 <div class='input-group-prepend'>
-                  <button class='btn btn-success add-resource' type='button' data-topic='{{id}}'>
+                  <button class='btn btn-sm btn-success add-resource' type='button' data-topic='{{id}}'>
                     +
                   </button>
                 </div>
-                <input id='add-resource-name-{{id}}' type='text' class='form-control' placeholder='add a Resource to this Topic'>
+                <input id='add-resource-name-{{id}}' type='text' class='form-control  form-control-sm' placeholder='add a Resource to this Topic'>
               </div>
               {{!-- END ADD RESOURCE TO TOPIC FIELD AND BUTTON --}}
 
@@ -137,15 +150,16 @@
                   <div class='input-group mb-1'>
 
                     <div class='input-group-prepend'>
-                      <button class='btn btn-primary delete-resource' type='button' data-resource='{{id}}'>
+                      <button class='btn btn-sm btn-primary delete-resource' type='button' data-resource='{{id}}'>
                         x
                       </button>
                     </div>
 
-                    <input type='text' class='rname form-control' placeholder='{{resourceName}}' data-resource='{{id}}'>
+                    <input type='text' class='rname form-control form-control-sm' placeholder='{{resourceName}}'
+                      data-resource='{{id}}'>
 
                     <div class='input-group-append'>
-                      <button class='btn btn-outline-primary toggle-resource' type='button' data-resource='{{id}}'>
+                      <button class='btn btn-sm btn-outline-primary toggle-resource' type='button' data-resource='{{id}}'>
                         >
                       </button>
                     </div>

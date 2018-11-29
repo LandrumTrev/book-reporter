@@ -53,6 +53,20 @@ module.exports = function (app) {
   }); // end app.get
 
   // ========================================================
+
+  // get the User's userName and id from the Project's UserId
+  app.get("/api/projects/user/:projectUserId", function(req, res) {
+    db.User.findOne({
+      where: { id: req.params.projectUserId }
+    }).then(function(dbUser) {
+      res.json(dbUser);
+    });
+  });
+
+  // ========================================================
+
+
+  // ========================================================
   // ========================================================
 
 
