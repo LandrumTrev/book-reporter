@@ -18,7 +18,9 @@
 <div id="topbar" class="container-fluid">
   <div id="topbar-content" class="container">
 
-    <div id="logo-box">take.<span>note</span></div>
+    <div id="logo-box">take.<span>note</span>
+      <img id="duck-icon" src="images/duck-blue.svg" alt="">
+    </div>
 
     <div id="editor-toggle" class="nav-thing">editor</div>
     <div id="list-toggle" class="nav-thing">list</div>
@@ -80,25 +82,25 @@
       {{!-- START COL FOR WS --}}
       <div id="project-list" class="col-sm-12 col-lg-4">
 
-        {{!-- START NEW TOPIC INPUT FIELD AND BUTTON --}}
-        <div class="input-group mb-2">
+        {{!-- START CREATE NEW TOPIC INPUT AND OPEN ALL RESOURCES --}}
+        <div id="new-topic-open-resources" class="input-group mb-2">
 
           <div class="input-group-prepend">
-            <button class="btn btn-secondary btn-sm" type="button" id="add-topic-button">
-              +
+            <button id="add-topic-button" class="btn btn-outline-secondary btn-sm" type="button">
+              <i class="fas fa-book"></i>
             </button>
           </div>
 
           <input id="add-topic-name" type="text" class="form-control form-control-sm" placeholder="add a new Topic to this Project">
 
           <div class='input-group-append'>
-            <button class='btn btn-sm btn-outline-secondary toggle-all-resources' type='button' data-topic='{{id}}'>
-              >
+            <button id="open-all-topics" class='btn btn-sm btn-secondary toggle-all-resources' type='button' data-topic='{{id}}'>
+              <i class="fas fa-book-open"></i>
             </button>
           </div>
 
         </div>
-        {{!-- END NEW TOPIC INPUT FIELD AND BUTTON --}}
+        {{!-- END CREATE NEW TOPIC INPUT AND OPEN ALL RESOURCES --}}
 
         {{!-- DIV TO FILL WITH HANDLEBARS TOPICS AND RESOURCES --}}
         <div id="project_display" class="col-12 list-group pr-0">
@@ -110,19 +112,19 @@
             <div id='t-{{id}}' class='topicbox list-group-item list-group-item-action mb-2'>
 
               {{!-- START TOPIC NAME DISPLAY-EDIT-DELETE --}}
-              <div class='input-group mb-1'>
+              <div class='topic-edit-group input-group mb-1'>
 
                 <div class='input-group-prepend'>
-                  <button class='btn btn-sm btn-danger delete-topic' type='button' data-topic='{{id}}'>
-                    x
+                  <button class='btn btn-sm btn-outline-danger delete-topic' type='button' data-topic='{{id}}'>
+                    <i class="fas fa-times"></i>
                   </button>
                 </div>
 
                 <input type='text' class='tname form-control form-control-sm' placeholder='{{topicName}}' data-topic='{{id}}'>
 
                 <div class='input-group-append'>
-                  <button class='btn btn-sm btn-outline-danger toggle-topic-resources' type='button' data-topic='{{id}}'>
-                    >
+                  <button class='btn btn-sm btn-danger toggle-topic-resources' type='button' data-topic='{{id}}'>
+                    <i class="fas fa-folder-open"></i>
                   </button>
                 </div>
 
@@ -130,13 +132,13 @@
               {{!-- END TOPIC NAME DISPLAY-EDIT-DELETE --}}
 
               {{!-- START ADD RESOURCE TO TOPIC FIELD AND BUTTON --}}
-              <div class='input-group mb-1'>
+              <div class='add-resource-group input-group mb-1'>
                 <div class='input-group-prepend'>
-                  <button class='btn btn-sm btn-success add-resource' type='button' data-topic='{{id}}'>
-                    +
+                  <button class='btn btn-sm btn-outline-secondary add-resource' type='button' data-topic='{{id}}'>
+                    <i class="fas fa-bookmark"></i>
                   </button>
                 </div>
-                <input id='add-resource-name-{{id}}' type='text' class='form-control  form-control-sm' placeholder='add a Resource to this Topic'>
+                <input id='add-resource-name-{{id}}' type='text' class='add-resource-input form-control  form-control-sm' placeholder='add a Resource to this Topic'>
               </div>
               {{!-- END ADD RESOURCE TO TOPIC FIELD AND BUTTON --}}
 
@@ -146,11 +148,11 @@
                 {{#each Resources}}
 
                   {{!-- START RESOURCE NAME DISPLAY-EDIT-DELETE --}}
-                  <div class='input-group mb-1'>
+                  <div class='resource-edit-group input-group mb-1'>
 
                     <div class='input-group-prepend'>
-                      <button class='btn btn-sm btn-primary delete-resource' type='button' data-resource='{{id}}'>
-                        x
+                      <button class='btn btn-sm btn-outline-primary delete-resource' type='button' data-resource='{{id}}'>
+                        <i class="fas fa-times"></i>
                       </button>
                     </div>
 
@@ -158,8 +160,8 @@
                       data-resource='{{id}}'>
 
                     <div class='input-group-append'>
-                      <button class='btn btn-sm btn-outline-primary toggle-resource' type='button' data-resource='{{id}}'>
-                        >
+                      <button class='btn btn-sm btn-primary toggle-resource' type='button' data-resource='{{id}}'>
+                        <i class="fas fa-pencil-alt"></i>
                       </button>
                     </div>
 
