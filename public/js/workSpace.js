@@ -53,30 +53,45 @@ $(document).ready(function () {
     });
   };
 
-  // ==========================================================
-  
-  // on page load, get the User's name and id number
-  $(document).ready(getUserInfo);
-
-  // on page load, run function to load projectContent from db in editor
-  function getUserInfo() {
-
-    // get the Project id from the editor DIV, set by Handlebars
-    var wpProjectId = $("#editor").attr("data-project");
-
-    // get the User's userName and id from the Project's UserId
-    $.ajax("/api/projects/user/" + wpProjectId, {
-      type: "GET",
-    }).then(function (userInfo) {
-      // console.log(userInfo);
-      // console.log(userInfo.userName);
-      // console.log(userInfo.id);
-      // insert the User's userName and id in the header info
-      $("#u-name").text(userInfo.userName + " (" + userInfo.id + ")");
-    });
-  };
 
   // ==========================================================
+  // TOGGLE THE VISIBILITY AND FULL-WIDTHS OF EDITOR AND LIST
+  // ==========================================================
+
+  // show and hide the projectContent Quill editor
+  $("#editor-toggle").on("click", function () {
+
+    $("#quillBox").toggle();
+    // $("#quillBox:hidden").show();
+    // $("#quillBox:visible").hide();
+
+    if (document.getElementById("quillBox").style.display == "none") {
+      console.log("quillBox invisible!");
+      $("#project-list").attr("class", "col-12");
+    } else {
+      console.log("quillBox visible!");
+      $("#project-list").attr("class", "col-sm-12 col-lg-4");
+    }
+
+  });
+
+  // +++++++++++
+
+  // show and hide the projectContent Quill editor
+  $("#list-toggle").on("click", function () {
+
+    $("#project-list").toggle();
+
+    if (document.getElementById("project-list").style.display == "none") {
+      console.log("project-list invisible!");
+      $("#quillBox").attr("class", "col-12");
+    } else {
+      console.log("project-list visible!");
+      $("#quillBox").attr("class", "col-sm-12 col-lg-8");
+    }
+
+  });
+
 
   // ==========================================================
   // START QUILL EDITOR FUNCTIONS

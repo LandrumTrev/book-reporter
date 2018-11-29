@@ -40,6 +40,7 @@ body {
   height: 100%;
   /* color: rgb(165, 185, 203); */
   font-weight: 700;
+  letter-spacing: .05rem;
 }
 
 .nav-thing {
@@ -78,8 +79,6 @@ body {
   color: rgb(215, 227, 237);
 }
 
-
-
 #signin-link {
   text-decoration: none;
 }
@@ -99,7 +98,7 @@ body {
 }
 
 #project-info p {
-  font-size: .9rem;
+  font-size: 1.2rem;
   line-height: .8rem;
   margin-top: 70px;
 }
