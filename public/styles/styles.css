@@ -6,7 +6,85 @@ body {
   background-color: aliceblue;
 }
 
-/* PRE-EXISTING STYLES ABOVE (remove/change/keep/whatevs) */
+#home {
+  /* background-color: orange; */
+}
+
+/* PRE-EXISTING STYLES ABOVE */
+/* =================== */
+/* HEADER BAR STYLES BELOW */
+
+#topbar {
+  position: fixed;
+  z-index: 3;
+  height: 50px;
+  background-color: rgb(33, 71, 104);
+}
+
+#topbar-content {
+  height: 100%;
+  /* background-color: rgb(65, 98, 126); */
+}
+
+#logo-box {
+  float: left;
+  height: 100%;
+  color: rgb(215, 227, 237);
+  font-weight: 100;
+  line-height: 3rem;
+  font-size: 1.8rem;
+  letter-spacing: .1rem;
+}
+
+#logo-box span {
+  height: 100%;
+  /* color: rgb(165, 185, 203); */
+  font-weight: 700;
+  letter-spacing: .05rem;
+}
+
+.nav-thing {
+  float: right;
+  margin-left: 10px;
+  height: 100%;
+  color: rgb(215, 227, 237);
+  font-weight: 100;
+  line-height: 3rem;
+  font-size: 1.5rem;
+  letter-spacing: .1rem;
+}
+
+.nav-thing a {
+  /* color: rgb(215, 227, 237); */
+  text-decoration: none;
+}
+
+/* unvisited link */
+.nav-thing a:link {
+  color: rgb(215, 227, 237);
+}
+
+/* visited link */
+.nav-thing a:visited {
+  color: rgb(215, 227, 237);
+}
+
+/* mouse over link */
+.nav-thing a:hover {
+  color: rgb(215, 227, 237);
+}
+
+/* selected link */
+.nav-thing a:active {
+  color: rgb(215, 227, 237);
+}
+
+#signin-link {
+  text-decoration: none;
+}
+
+
+/* HEADER BAR STYLES ABOVE */
 /* =================== */
 /* NEW STYLES BELOW */
 
@@ -17,6 +95,16 @@ body {
 .rescont {
   font-size: .8rem;
   line-height: 1.1rem;
+}
+
+#project-info p {
+  font-size: 1.1rem;
+  line-height: .8rem;
+  margin-top: 70px;
+}
+
+#project-info p strong {
+  color: maroon;
 }
 
 

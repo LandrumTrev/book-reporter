@@ -1,5 +1,5 @@
 // ====================================================
-// BookReporter :: A research project note organizer and composer
+// take.note :: A research project note organizer and composer
 // MVC with MySQL, Node, Express, Handlebars and Sequelize.
 // ©2018 Nicholas Angelo Batten, Ryan Case, Melissa Derricott, Alex Silvester, Richard Trevillian
 // University of Richmond (Virginia)
@@ -14,6 +14,7 @@
 // GET all topics for project - DONE (see wsHtmlRoutes.js)
 // GET all resources for each topic - DONE (see wsHtmlRoutes.js)
 // GET projectContent Quill editor text from db - DONE
+// GET User data (userName, id) from Project's UserId - DONE
 
 // POST new topic for project - DONE
 // POST new resource name for each topic - DONE
@@ -29,6 +30,66 @@
 
 // start jQuery wrapper function
 $(document).ready(function () {
+
+  // ==========================================================
+
+  // on page load, get the User's name and id number
+  $(document).ready(getUserInfo);
+
+  // on page load, run function to load projectContent from db in editor
+  function getUserInfo() {
+
+    // get the Project id from the editor DIV, set by Handlebars
+    var wpProjectId = $("#editor").attr("data-project");
+
+    // get the User's userName and id from the Project's UserId
+    $.ajax("/api/projects/user/" + wpProjectId, {
+      type: "GET",
+    }).then(function (userInfo) {
+      // console.log(userInfo.userName);
+      // console.log(userInfo.id);
+      // insert the User's userName and id in the header info
+      $("#u-name").text(userInfo.userName + " (" + userInfo.id + ")");
+    });
+  };
+
+
+  // ==========================================================
+  // TOGGLE THE VISIBILITY AND FULL-WIDTHS OF EDITOR AND LIST
+  // ==========================================================
+
+  // show and hide the projectContent Quill editor
+  $("#editor-toggle").on("click", function () {
+
+    $("#quillBox").toggle();
+
+    if (document.getElementById("quillBox").style.display == "none") {
+      console.log("quillBox invisible!");
+      $("#project-list").attr("class", "col-12");
+    } else {
+      console.log("quillBox visible!");
+      $("#project-list").attr("class", "col-sm-12 col-lg-4");
+    }
+
+  });
+
+  // +++++++++++
+
+  // show and hide the projectContent Quill editor
+  $("#list-toggle").on("click", function () {
+
+    $("#project-list").toggle();
+
+    if (document.getElementById("project-list").style.display == "none") {
+      console.log("project-list invisible!");
+      $("#quillBox").attr("class", "col-12");
+    } else {
+      console.log("project-list visible!");
+      $("#quillBox").attr("class", "col-sm-12 col-lg-8");
+    }
+
+  });
+
 
   // ==========================================================
   // START QUILL EDITOR FUNCTIONS
