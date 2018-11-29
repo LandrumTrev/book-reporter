@@ -1,3 +1,16 @@
+/* ====================================================
+take.note :: A research project note organizer and composer
+MVC with MySQL, Node, Express, Handlebars and Sequelize.
+©2018 Nicholas Angelo Batten, Ryan Case, Melissa Derricott, Alex Silvester, Richard Trevillian
+University of Richmond (Virginia)
+Full Stack Developer Bootcamp (July 2018)
+====================================================
+styles.js
+DOM event handlers for wordprocessor.handlebars page view
+these functions to be incorporated into workspace.js
+==================================================== */
+
+
 .list-group-item {
   line-height: 2.5;
 }
@@ -248,8 +261,11 @@ body {
 
 .ql-toolbar {
   background-color: rgb(183, 201, 216);
-  text-align: center;
   box-shadow: 3px 3px 18px rgb(205, 211, 216);
+}
+
+.ql-picker-label {
+  font-size: .6rem;
 }
 
 #editor {

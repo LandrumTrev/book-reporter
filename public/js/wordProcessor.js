@@ -1,5 +1,5 @@
 // ====================================================
-// BookReporter :: A research project note organizer and composer
+// take.note :: A research project note organizer and composer
 // MVC with MySQL, Node, Express, Handlebars and Sequelize.
 // ©2018 Nicholas Angelo Batten, Ryan Case, Melissa Derricott, Alex Silvester, Richard Trevillian
 // University of Richmond (Virginia)
@@ -25,6 +25,7 @@ var toolbarOptions = [
   ['link', 'image', 'formula'],
   ['blockquote', 'code-block']
 ];
+
 
 // ];CREATE A NEW EDITOR
 var quill = new Quill('#editor', {
