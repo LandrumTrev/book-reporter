@@ -30,6 +30,8 @@ function signIn() {
       $("#username").text(username);
       $("#sign-in").hide();
       $(".hello").show();
+      createNewUser(username);
+      getUserId(username);
 
     });
   }
@@ -91,6 +93,15 @@ function postNewProject(username) {
     }).then(function(result) {
       console.log(result);
     });
+  });
+}
+
+function createNewUser(username){
+  $.ajax({
+    type: "POST",
+    url: "/api/users/" + username
+  }).then(function(result){
+    console.log(result)
   });
 }
 
