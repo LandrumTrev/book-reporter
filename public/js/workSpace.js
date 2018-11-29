@@ -96,6 +96,10 @@ $(document).ready(function () {
 
     // set the height of each textarea to the scrollHeight of it's content text
     $(thisTextarea).height($("textarea")[i].scrollHeight);
+
+    // set the height of each textarea to the scrollHeight of it's content text
+    $(thisTextarea).hide();
+
   }
 
   // ==========================================================
