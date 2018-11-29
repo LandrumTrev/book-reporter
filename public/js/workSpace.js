@@ -1,5 +1,5 @@
 // ====================================================
-// BookReporter :: A research project note organizer and composer
+// take.note :: A research project note organizer and composer
 // MVC with MySQL, Node, Express, Handlebars and Sequelize.
 // ©2018 Nicholas Angelo Batten, Ryan Case, Melissa Derricott, Alex Silvester, Richard Trevillian
 // University of Richmond (Virginia)
@@ -14,6 +14,7 @@
 // GET all topics for project - DONE (see wsHtmlRoutes.js)
 // GET all resources for each topic - DONE (see wsHtmlRoutes.js)
 // GET projectContent Quill editor text from db - DONE
+// GET User data (userName, id) from Project's UserId - DONE
 
 // POST new topic for project - DONE
 // POST new resource name for each topic - DONE
@@ -45,7 +46,6 @@ $(document).ready(function () {
     $.ajax("/api/projects/user/" + wpProjectId, {
       type: "GET",
     }).then(function (userInfo) {
-      // console.log(userInfo);
       // console.log(userInfo.userName);
       // console.log(userInfo.id);
       // insert the User's userName and id in the header info
@@ -62,8 +62,6 @@ $(document).ready(function () {
   $("#editor-toggle").on("click", function () {
 
     $("#quillBox").toggle();
-    // $("#quillBox:hidden").show();
-    // $("#quillBox:visible").hide();
 
     if (document.getElementById("quillBox").style.display == "none") {
       console.log("quillBox invisible!");

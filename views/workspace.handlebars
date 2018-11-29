@@ -1,5 +1,5 @@
 {{!-- ==================================================== --}}
-{{!-- BookReporter :: A research project note organizer and composer --}}
+{{!-- take.note :: A research project note organizer and composer --}}
 {{!-- MVC with MySQL, Node, Express, Handlebars and Sequelize. --}}
 {{!-- ©2018 Nicholas Angelo Batten, Ryan Case, Melissa Derricott, Alex Silvester, Richard Trevillian --}}
 {{!-- University of Richmond (Virginia) --}}
@@ -20,8 +20,8 @@
 
     <div id="logo-box">take.<span>note</span></div>
 
-    <div id="list-toggle" class="nav-thing">list</div>
     <div id="editor-toggle" class="nav-thing">editor</div>
+    <div id="list-toggle" class="nav-thing">list</div>
     <div id="signin-link" class="nav-thing">
       <a href="/">signin</a>
     </div>
@@ -42,7 +42,7 @@
         <div id="project-info">
           <p>
             project: <strong id="p-name">{{project.projectName}}</strong data-projectname="{{project.projectName}}">
-            {{!-- | user: <strong id="u-name" data-userid="{{project.UserId}}"></strong> --}}
+            | user: <strong id="u-name" data-userid="{{project.UserId}}"></strong>
           </p>
         </div>
 
