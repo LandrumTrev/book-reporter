@@ -1,74 +1,280 @@
+/* ====================================================
+take.note :: A research project note organizer and composer
+MVC with MySQL, Node, Express, Handlebars and Sequelize.
+©2018 Nicholas Angelo Batten, Ryan Case, Melissa Derricott, Alex Silvester, Richard Trevillian
+University of Richmond (Virginia)
+Full Stack Developer Bootcamp (July 2018)
+====================================================
+styles.js
+DOM event handlers for wordprocessor.handlebars page view
+these functions to be incorporated into workspace.js
+==================================================== */
+
+
 .list-group-item {
   line-height: 2.5;
 }
 
 body {
-  background-color: aliceblue;
+  background-color: rgb(215, 227, 237);
 }
 
-/* PRE-EXISTING STYLES ABOVE (remove/change/keep/whatevs) */
+#home {
+  /* background-color: orange; */
+}
+
+/* PRE-EXISTING STYLES ABOVE */
 /* =================== */
-/* NEW STYLES BELOW */
+/* HEADER BAR STYLES BELOW */
+
+#topbar {
+  position: fixed;
+  z-index: 3;
+  height: 50px;
+  background-color: rgb(33, 71, 104);
+}
+
+#topbar-content {
+  height: 100%;
+  /* background-color: rgb(65, 98, 126); */
+}
+
+#logo-box {
+  float: left;
+  height: 100%;
+  color: rgb(215, 227, 237);
+  font-weight: 100;
+  line-height: 3rem;
+  font-size: 1.8rem;
+  letter-spacing: .1rem;
+}
+
+#logo-box span {
+  height: 100%;
+  /* color: rgb(165, 185, 203); */
+  font-weight: 700;
+  letter-spacing: .05rem;
+}
+
+#duck-icon {
+  position: relative;
+  float: left;
+  top: 14px;
+  height: 23px;
+  margin-right: 12px;
+  margin-left: 2px;
+  /* background-color: rgb(196, 109, 132); */
+  /* border-radius: 30px; */
+  /* padding: 5px; */
+}
+
+.nav-thing {
+  float: right;
+  margin-left: 10px;
+  height: 100%;
+  color: rgb(215, 227, 237);
+  font-weight: 100;
+  line-height: 3rem;
+  font-size: 1.5rem;
+  letter-spacing: .1rem;
+}
+
+.nav-thing a {
+  /* color: rgb(215, 227, 237); */
+  text-decoration: none;
+}
+
+/* unvisited link */
+.nav-thing a:link {
+  color: rgb(215, 227, 237);
+}
+
+/* visited link */
+.nav-thing a:visited {
+  color: rgb(215, 227, 237);
+}
+
+/* mouse over link */
+.nav-thing a:hover {
+  color: rgb(215, 227, 237);
+}
+
+/* selected link */
+.nav-thing a:active {
+  color: rgb(215, 227, 237);
+}
+
+#signin-link {
+  text-decoration: none;
+}
+
+
+/* HEADER BAR STYLES ABOVE */
+/* =================== */
+/* LIST STYLES BELOW */
+
+#project-info p {
+  font-size: 1.1rem;
+  line-height: .8rem;
+  margin-top: 70px;
+}
+
+#project-info p strong {
+  color: maroon;
+}
+
+/* =================== */
 
 .topicbox {
-  background-color: #eee;
+  background-color: rgb(215, 227, 237);
+  border: none;
+  padding: 15px 0px 0px 0px;
+}
+
+.topicbox:hover {
+  background-color: rgb(215, 227, 237);
+  border: none;
 }
 
 .rescont {
   font-size: .8rem;
   line-height: 1.1rem;
+  box-shadow: 3px 3px 8px rgb(205, 211, 216);
+
 }
 
-.delete-resource {
-  position: relative;
-  top: 7px;
-  color: blue;
+/* =================== */
+
+#add-topic-button {
+  color: rgb(33, 71, 104);
+  background-color: rgb(255, 255, 255);
 }
+
+#add-topic-button:hover {
+  color: rgb(255, 255, 255);
+  background-color: rgb(33, 71, 104);
+}
+
+#open-all-topics {
+  color: rgb(255, 255, 255);
+  background-color: rgb(33, 71, 104);
+}
+
+#open-all-topics:hover {
+  color: rgb(33, 71, 104);
+  background-color: rgb(255, 255, 255);
+}
+
+#new-topic-open-resources {
+  box-shadow: 3px 3px 8px rgb(205, 211, 216);
+}
+
+#add-topic-name {
+  border: .5px solid rgb(170, 170, 170);
+}
+/* =================== */
 
 .delete-topic {
-  position: relative;
-  top: 5px;
-  color: red;
+  color: rgb(203, 141, 157);
+  background-color: rgb(255, 255, 255);
 }
 
+.delete-topic:hover {
+  color: rgb(255, 255, 255);
+  background-color: rgb(203, 141, 157);
+}
+
+.toggle-topic-resources {
+  color: rgb(255, 255, 255);
+  background-color: rgb(196, 109, 132);
+}
+
+.toggle-topic-resources:hover {
+  color: rgb(196, 109, 132);
+  background-color: rgb(255, 255, 255);
+}
+
+.tname {
+  border: .5px solid rgb(196, 109, 132);
+}
+
+.topic-edit-group {
+  box-shadow: 3px 3px 8px rgb(205, 211, 216);
+}
+
+/* =================== */
+
+.add-resource {
+  color: rgb(253, 253, 253);
+  background-color: rgb(183, 201, 216);
+  border: .5px solid rgb(170, 170, 170);
+}
+
+.add-resource-input {
+  border: .5px solid rgb(170, 170, 170);
+}
+
+.add-resource-group {
+  box-shadow: 3px 3px 8px rgb(205, 211, 216);
+}
+
+/* =================== */
+
+.delete-resource {
+  color: rgb(123, 176, 220);
+  background-color: rgb(255, 255, 255);
+  border: .5px solid rgb(123, 176, 220);
+}
+
+.delete-resource:hover {
+  color: rgb(255, 255, 255);
+  background-color: rgb(123, 176, 220);
+  border: .5px solid rgb(123, 176, 220);
+}
+
+.toggle-resource {
+  color: rgb(255, 255, 255);
+  background-color: rgb(81, 131, 172);
+  border: .5px solid rgb(123, 176, 220);
+}
+
+.toggle-resource:hover {
+  color: rgb(81, 131, 172);
+  background-color: rgb(255, 255, 255);
+  border: .5px solid rgb(123, 176, 220);
+}
+
+.rname {
+  border: .5px solid rgb(123, 176, 220);
+}
+
+.resource-edit-group {
+  box-shadow: 3px 3px 8px rgb(205, 211, 216);
+}
+
+/* =================== */
+
+/* LIST STYLES ABOVE */
+/* =================== */
 /* OOOOOOO WORDPROCESSOR STYLES START 00000000*/
 
+
 .ql-toolbar {
-  background-color: azure;
-  /* visibility: hidden; */
-  text-align: center;
-  opacity: 0.8;
+  background-color: rgb(183, 201, 216);
+  box-shadow: 3px 3px 18px rgb(205, 211, 216);
 }
-#resourceBlock {
-  background: linear-gradient(white, #0000ff1a);
-  box-shadow: 0px 0px 40px lightsteelblue;
+
+.ql-picker-label {
+  font-size: .6rem;
 }
-.page-header {
-  text-align: center;
-  height: 11em;
-}
+
 #editor {
-  background-color: ghostwhite;
+  background-color: rgb(254, 254, 254);
   overflow: scroll;
-  height: 39em;
-  box-shadow: 0px 0px 40px lightsteelblue;
+  height: 80vh;
+  box-shadow: 3px 3px 18px rgb(205, 211, 216);
 }
-#viewNotes {
-  border-radius: 54%;
-  height: 4em;
-}
-#viewNotes:hover {
-  cursor: pointer;
-}
-#resources {
-  text-align: center;
-}
-#logo {
-  height: 26em;
-  position: fixed;
-  bottom: 59%;
-  left: 12%;
-}
+
 /* OOOOOOO WORDPROCESSOR STYLES END 00000000*/
 
 
@@ -82,28 +288,28 @@ body {
 /* Extra small devices (phones, 575px and down) */
 @media only screen and (max-width: 575px) {
   body {
-    background-color: #fff;
+    /* background-color: #fff; */
   }
 }
 
 /* Small devices (portrait tablets and large phones, 576px and up) */
 @media only screen and (min-width: 576px) {
   body {
-    background-color: aliceblue;
+    /* background-color: aliceblue; */
   }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
   body {
-    background-color: #fff;
+    /* background-color: #fff; */
   }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
   body {
-    background-color: aliceblue;
+    /* background-color: aliceblue; */
   }
 }
 
