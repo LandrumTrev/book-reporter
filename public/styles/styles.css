@@ -121,6 +121,28 @@ body {
 
 /* =================== */
 
+/* =================== */
+/* on signin.handlebars */
+/* =================== */
+
+.add-project-button {
+  color: rgb(33, 71, 104);
+  background-color: rgb(255, 255, 255);
+}
+
+.add-project-button:hover {
+  color: rgb(255, 255, 255);
+  background-color: rgb(33, 71, 104);
+}
+
+.add-project-name {
+  border: .5px solid rgb(170, 170, 170);
+}
+
+/* =================== */
+/* on workspace.handlebars */
+/* =================== */
+
 .topicbox {
   background-color: rgb(215, 227, 237);
   border: none;

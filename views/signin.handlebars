@@ -9,7 +9,52 @@
 {{!-- htmlRoutes.js renders a Handlebars view for the user login page --}}
 {{!-- ==================================================== --}}
 
+{{!-- START TOP BAR WITH LOGO AND NAV --}}
+<div id="topbar" class="container-fluid">
+  <div id="topbar-content" class="container">
+
+    {{!-- LOGO AND DUCK --}}
+    <a href="/">
+      <div id="logo-box">take.<span>note</span>
+        <img id="duck-icon" src="images/duck-blue.svg" alt="">
+      </div>
+    </a>
+
+    {{!-- SIGN OUT BUTTON --}}
+    <div id="sign-out" class="nav-thing">sign out</div>
+
+    {{!-- USERNAME GREETING --}}
+    <a href="/">
+      <div class="nav-thing hello">Hi <span id="username"></span>!</div>
+    </a>
+
+  </div>
+</div>
+{{!-- END TOP BAR WITH LOGO AND NAV --}}
+
+
 <div class="container">
+
+  {{!-- START create a new project --}}
+  <div class="row">
+    <div id="project-info" class="col-12">
+      <p><strong>create a new project:</strong></p>
+    </div>
+  </div>
+  {{!-- END create a new project --}}
+
+  {{!-- START CREATE NEW PROJECT INPUT --}}
+  <div id="new-project-input" class="input-group mb-2">
+    <div id="createNewProject" class="input-group-prepend">
+      <button id="createNewProjectButton" class="add-project-button btn btn-outline-secondary btn-sm" type="submit">
+        <i class="fas fa-book"></i>
+      </button>
+    </div>
+    <input id="projectName" type="text" class="add-project-name form-control form-control-sm" placeholder="enter a name for your new Project and click the book icon">
+  </div>
+  {{!-- END CREATE NEW PROJECT INPUT --}}
+
+  {{!-- START SIGNIN MODAL --}}
   <div class="row">
     <div class="col-lg-4">
       <!-- Button trigger modal -->
@@ -45,17 +90,29 @@
           </div>
         </div>
       </div>
-      <h2 class="hello">Hello: <span id="username"></span>!</h2>
-      <button type="button" class="btn btn-primary" id="sign-out">Sign Out</button>
+
+      {{!-- Hello: greeting --}}
+      {{!-- <h2 class="hello">Hello: <span id="username"></span>!</h2> --}}
+
+      {{!-- SIGN OUT BUTTON --}}
+      {{!-- <button type="button" class="btn btn-primary" id="sign-out">Sign Out</button> --}}
+
     </div>
   </div>
+  {{!-- END SIGNIN MODAL --}}
+
+
+
+
   <div class="newProject">
-    <div class="row">
+
+    {{!-- <div class="row">
       <div class="col-12">
         <h1>Create a New Project</h1>
       </div>
-    </div>
-    <div class="row">
+    </div> --}}
+
+    {{!-- <div class="row">
       <div class="col-12">
         <form id="createNewProject">
           <div class="form-group">
@@ -65,7 +122,8 @@
           <button type="submit" id="createNewProjectButton" class="btn btn-primary">Create</button>
         </form>
       </div>
-    </div>
+    </div> --}}
+
   </div>
   <div class="myProjects">
     <div class="row">
