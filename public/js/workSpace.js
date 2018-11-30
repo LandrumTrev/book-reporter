@@ -40,10 +40,10 @@ $(document).ready(function () {
   function getUserInfo() {
 
     // get the Project id from the editor DIV, set by Handlebars
-    var wpProjectId = $("#editor").attr("data-project");
+    var projectsUserId = $("#home").attr("data-userid");
 
     // get the User's userName and id from the Project's UserId
-    $.ajax("/api/projects/user/" + wpProjectId, {
+    $.ajax("/api/projects/user/" + projectsUserId, {
       type: "GET",
     }).then(function (userInfo) {
       // console.log(userInfo.userName);
@@ -159,7 +159,7 @@ $(document).ready(function () {
     $(thisTextarea).height($("textarea")[i].scrollHeight);
 
     // set the height of each textarea to the scrollHeight of it's content text
-    $(thisTextarea).hide();
+    // $(thisTextarea).hide();
 
   }
 
