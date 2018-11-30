@@ -23,6 +23,7 @@ function signIn() {
   if (localStorage.getItem("username") === null) {
     console.log("no username");
     $(".hello").hide();
+    $("#sign-out").hide();
     $(".newProject").hide();
     $(".myProjects").hide();
     $("#log-in").click(function() {
@@ -32,6 +33,7 @@ function signIn() {
       $("#username").text(username);
       $("#sign-in").hide();
       $(".hello").show();
+      $("#sign-out").show();
       $(".newProject").show();
       $(".myProjects").show();
       createNewUser(username);
@@ -46,16 +48,19 @@ function signIn() {
     console.log(username);
     $("#username").empty();
     $(".hello").show();
+    $("#sign-out").show();
     $(".newProject").show();
     $(".myProjects").show();
     $("#username").text(username);
-    getUserId(username);
-
-    //Ryan create a div that displays "If not" + username + " ,click here"
-    // When the div is clicked (on.click) run this code:
-    //localStorage.removeItem(username);
+    getUserId(username); 
   }
 }
+
+//Sign out click event
+$("#sign-out").click(function(event) {
+  localStorage.removeItem("username", username);
+  location.reload(true);
+});
 
 function getUserId(username) {
   $.ajax({
