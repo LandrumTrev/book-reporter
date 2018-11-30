@@ -32,16 +32,6 @@
 $(document).ready(function () {
 
   // ==========================================================
-  // ELIMINATE THIS GLOBAL TESTING VARIABLE, GET PROJECTIDs FROM PAGE
-  // ==========================================================
-
-  // get the Project ID for this page from the last char in the current URL
-  // var thisURL = window.location.href;
-  // console.log(thisURL);
-  // var projectId = thisURL[thisURL.length - 1];
-  // console.log(projectId);
-
-  // ==========================================================
 
   // on page load, get the User's name and id number
   $(document).ready(getUserInfo);
