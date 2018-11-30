@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "Yankees02",
+    "password": "root",
     "database": "bookreporter_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
