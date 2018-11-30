@@ -252,6 +252,7 @@ body {
 
 /* LIST STYLES ABOVE */
 /* =================== */
+
 /* OOOOOOO WORDPROCESSOR STYLES START 00000000*/
 
 
@@ -273,6 +274,52 @@ body {
 
 /* OOOOOOO WORDPROCESSOR STYLES END 00000000*/
 
+/* =================== */
+
+/* OOOOOOO SIGN IN STYLES START 00000000*/
+#duckFloat {
+  position: absolute;
+  left: 117%;
+  bottom: -70%;
+    width: 200px;
+    height: 200px;
+    border: solid;
+    text-align: center;
+    border-radius: 50%;
+    background-color: black;
+  animation-name: clickHere;
+  animation-duration: 2.8s;
+  }
+  @keyframes clickHere {
+      0%   { bottom:100%; }
+      100% { bottom:-70%; }
+  }
+
+#sign-in {
+  bottom: -1em;
+  position: relative;
+}
+#duckPic {
+  height: 106px;
+  position: relative;
+  top: 12%;
+}
+#landingTitle {
+  left: 98%;
+    position: relative;
+    top: 153%;
+    animation: fadeInFromNone 2.8s ease-in;
+}
+@keyframes fadeInFromNone {
+    0% {
+        opacity: 0;
+    }
+100% { 
+    opacity: 100%;
+
+}
+}
+/* OOOOOOO SIGN IN STYLES END 00000000*/
 
 /* NEW STYLES ABOVE */
 /* =================== */
