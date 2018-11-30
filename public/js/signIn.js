@@ -23,25 +23,18 @@ function signIn() {
   if (localStorage.getItem("username") === null) {
     console.log("no username");
     $(".hello").hide();
-<<<<<<< HEAD
     $(".newProject").hide();
     $(".myProjects").hide();
     $("#log-in").click(function() {
-=======
-    $("#log-in").click(function () {
->>>>>>> master
       username = $("#userNameFirst").val();
       console.log(username);
       localStorage.setItem("username", username);
       $("#username").text(username);
       $("#sign-in").hide();
       $(".hello").show();
-<<<<<<< HEAD
       $(".newProject").show();
       $(".myProjects").show();
-=======
       createNewUser(username);
->>>>>>> master
       getUserId(username);
 
     });
@@ -113,12 +106,13 @@ function postNewProject(username) {
     type: "GET",
     url: "/api/user/" + username
   }).then(function(result) {
-    var projectName = $("#projectName").value().trim();
+    var projectName = $("#projectName").val().trim();
     $.ajax({
       type: "POST",
       url: "/api/user/" + result.id + "/" + projectName
     }).then(function(result) {
-      console.log(result);
+      console.log("New project " + result);
+      getUserId(username);
     });
   });
 }
@@ -133,3 +127,9 @@ function createNewUser(username){
 }
 
 // Ryan: Create an On click function for submitting new project, that calls postNewProject(username)
+$("#createNewProjectButton").click(function(event) {
+  //event.preventDefault();
+  console.log("Clicked");
+  postNewProject(username);
+  location.reload(true);
+});
