@@ -32,6 +32,16 @@
 $(document).ready(function () {
 
   // ==========================================================
+  // ELIMINATE THIS GLOBAL TESTING VARIABLE, GET PROJECTIDs FROM PAGE
+  // ==========================================================
+
+  // get the Project ID for this page from the last char in the current URL
+  // var thisURL = window.location.href;
+  // console.log(thisURL);
+  // var projectId = thisURL[thisURL.length - 1];
+  // console.log(projectId);
+
+  // ==========================================================
 
   // on page load, get the User's name and id number
   $(document).ready(getUserInfo);
@@ -165,14 +175,6 @@ $(document).ready(function () {
 
   // ==========================================================
 
-  // get the Project ID for this page from the last char in the current URL
-  var thisURL = window.location.href;
-  // console.log(thisURL);
-  var projectId = thisURL[thisURL.length - 1];
-  // console.log(projectId);
-
-  // ==========================================================
-
   // event listener for .toggle-all-resources button to show/hide all Project Resources
   $(document).on("click", ".toggle-all-resources", showHideProjectResources);
 
@@ -237,6 +239,9 @@ $(document).ready(function () {
   function addTopic() {
     var newTopic = $("#add-topic-name").val().trim();
     // console.log(newTopic);
+
+    // get the Project id from the editor DIV, set by Handlebars
+    var projectId = $("#editor").attr("data-project");
 
     // POST call to wsApiRoutes /api/:project/:topicname
     $.post("/api/projects/" + projectId + "/" + newTopic, function () {
