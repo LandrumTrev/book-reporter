@@ -9,5 +9,14 @@
 // DOM event handlers for myprojects.handlebars page view
 // ====================================================
 
+//Hide the project cards until sign in is clicked
+$("#projectSection").hide();
+
+//Dont run anything below until the browser has loaded
+$(document).ready(function() {
+    //Click event for showing all projects for the user
+    
+});
+
 // GET all user's projects ($.get() to myprojectsApiRoutes.js)
 // POST a new project for user ($.post() to myprojectsApiRoutes.js)
