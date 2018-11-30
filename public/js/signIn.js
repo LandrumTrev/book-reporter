@@ -26,12 +26,14 @@ function signIn() {
     $("#sign-out").hide();
     $(".newProject").hide();
     $(".myProjects").hide();
-    $("#log-in").click(function() {
+    $("#log-in").click(function () {
       username = $("#userNameFirst").val();
       console.log(username);
       localStorage.setItem("username", username);
       $("#username").text(username);
       $("#sign-in").hide();
+      $("#landingTitle").css("display", "none");
+      $("#duckFloat").css("display", "none");
       $(".hello").show();
       $("#sign-out").show();
       $(".newProject").show();
@@ -44,6 +46,8 @@ function signIn() {
   //UserName is in Local Storage
   else {
     $("#sign-in").hide();
+    $("#landingTitle").css("display", "none");
+    $("#duckFloat").css("display", "none");
     username = localStorage.getItem("username");
     console.log(username);
     $("#username").empty();
@@ -52,16 +56,16 @@ function signIn() {
     $(".newProject").show();
     $(".myProjects").show();
     $("#username").text(username);
-    getUserId(username); 
+    getUserId(username);
   }
 }
 // Opens the sign in modle and clears the landing page buisness
-$("#sign-in").click(function(event) {
+$("#sign-in").click(function (event) {
   $("#landingTitle").css("display", "none");
   $("#duckFloat").css("display", "none");
 })
 //Sign out click event
-$("#sign-out").click(function(event) {
+$("#sign-out").click(function (event) {
   localStorage.removeItem("username", username);
   location.reload(true);
 });
@@ -70,7 +74,7 @@ function getUserId(username) {
   $.ajax({
     type: "GET",
     url: "/api/user/" + username
-  }).then(function(result) {
+  }).then(function (result) {
     console.log(result.id);
     getUserProjects(result.id);
   });
@@ -80,9 +84,9 @@ function getUserProjects(userId) {
   $.ajax({
     type: "GET",
     url: "/api/" + userId + "/projects"
-  }).then(function(result) {
+  }).then(function (result) {
     console.log(result);
-    for (i=0; i < result.length; i++){
+    for (i = 0; i < result.length; i++) {
       var projectUrl = result[i].id
       $(".projects").append(`
       <div class="col-md-4">
@@ -97,14 +101,14 @@ function getUserProjects(userId) {
       `)
     }
 
-});
+  });
 }
 
 function postUserNameId(username) {
   $.ajax({
     type: "POST",
     url: "/api/users/" + username
-  }).then(function(result) {
+  }).then(function (result) {
     console.log(result);
     getUserId(username);
   });
@@ -114,29 +118,29 @@ function postNewProject(username) {
   $.ajax({
     type: "GET",
     url: "/api/user/" + username
-  }).then(function(result) {
+  }).then(function (result) {
     var projectName = $("#projectName").val().trim();
     $.ajax({
       type: "POST",
       url: "/api/user/" + result.id + "/" + projectName
-    }).then(function(result) {
+    }).then(function (result) {
       console.log("New project " + result);
       getUserId(username);
     });
   });
 }
 
-function createNewUser(username){
+function createNewUser(username) {
   $.ajax({
     type: "POST",
     url: "/api/users/" + username
-  }).then(function(result){
+  }).then(function (result) {
     console.log(result)
   });
 }
 
 // Ryan: Create an On click function for submitting new project, that calls postNewProject(username)
-$("#createNewProjectButton").click(function(event) {
+$("#createNewProjectButton").click(function (event) {
   //event.preventDefault();
   console.log("Clicked");
   postNewProject(username);
