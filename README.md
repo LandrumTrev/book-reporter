@@ -1,7 +1,11 @@
 # take.note
-### A Project document note organizer and composer
+### A Project Composition and Content Organization Web App
 
-*MVC with MySQL, Node, Express, Handlebars, Sequelize and Quill.js word processor.*
+*Responsive RESTful MVC web app built with Node, Express, Handlebars, HTML, CSS, Bootstrap, JavaScript, jQuery, MySQL, Sequelize and Quill.js word processor.*
+
+_________________________________________________    
+
+**Keep all your notes organized alongside your project document in a take.note's integrated workspace. Keep  all your projects together in one place you can access online from any device. take.note can help you write books, papers, speeches, screenplays, apps, project planning, and more--anything that requires a final formatted document using multiple content sources.**
 
 _________________________________________________    
 
@@ -70,15 +74,21 @@ Rename a Topic by editing it's name and click outside the box to save. Delete th
 __edit a Resource__     
 *rename a Resource, delete a Resource, toggle Content area, edit Content area*     
 Rename a Resource by editing it's name and click outside the box to save. Delete the Resource by clicking the X button next to the Resource name. Toggle open and closed the Resource Contents for that Resource by clicking the down button to the right of the Resource name. When a Resource's Content area is open, you can edit the Resource Contents, and save them just by clicking outside the Content area. Currently the Resource Content areas will only hold unformatted text; additional formatting and file storage are planned for future releases.    
+_________________________________________________    
+
+### Built by 
+
+[Nicholas Angelo Batten](https://github.com/Nicholasangelo)    
+[Ryan Case](https://github.com/Ryan-T-Case)    
+[Melissa Derricott](https://github.com/MDerricott)    
+[Alex Silvester](https://github.com/aosilvester)    
+[Richard Trevillian](https://github.com/LandrumTrev)    
 
 _________________________________________________    
 
-[source: take.note on GitHub](https://github.com/LandrumTrev/book-reporter)
+[source: take.note on GitHub](https://github.com/LandrumTrev/book-reporter)   
 
-###### ©2018 Nicholas Angelo Batten, Ryan Case, Melissa Derricott, Alex Silvester, Richard Trevillian
-###### University of Richmond (Virginia)
-###### Full Stack Developer Bootcamp (July 2018)
-###### 2018-11-30
-
-
-
+*©2018 Nicholas Angelo Batten, Ryan Case, Melissa Derricott, Alex Silvester, Richard Trevillian*   
+*University of Richmond (Virginia)*    
+*Full Stack Developer Bootcamp (July 2018)*     
+*2018-11-30*    
