@@ -121,6 +121,18 @@ body {
 
 /* =================== */
 
+#project-list p {
+  font-size: 1.1rem;
+  line-height: .8rem;
+  margin-top: 20px;
+}
+
+#project-list p strong {
+  color: maroon;
+}
+
+/* =================== */
+
 /* =================== */
 /* on signin.handlebars */
 /* =================== */
@@ -137,6 +149,41 @@ body {
 
 .add-project-name {
   border: .5px solid rgb(170, 170, 170);
+}
+
+/* =================== */
+
+.delete-project {
+  color: rgb(196, 109, 132);
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(33, 71, 104);
+
+}
+
+.delete-project:hover {
+  color: rgb(255, 255, 255);
+  background-color: rgb(203, 141, 157);
+}
+
+.goto-project {
+  width: 30px;
+  color: rgb(255, 255, 255);
+  background-color: rgb(33, 71, 104);
+  border: 1px solid rgb(33, 71, 104);
+}
+
+.goto-project:hover {
+  color: rgb(33, 71, 104);
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(33, 71, 104);
+}
+
+.pname {
+  border: .5px solid rgb(33, 71, 104);
+}
+
+.project-edit-group {
+  box-shadow: 3px 3px 8px rgb(205, 211, 216);
 }
 
 /* =================== */
@@ -190,6 +237,7 @@ body {
 #add-topic-name {
   border: .5px solid rgb(170, 170, 170);
 }
+
 /* =================== */
 
 .delete-topic {
@@ -224,12 +272,13 @@ body {
 
 .add-resource {
   color: rgb(253, 253, 253);
-  background-color: rgb(183, 201, 216);
+  background-color: rgb(123, 176, 220);
   border: .5px solid rgb(170, 170, 170);
 }
 
 .add-resource-input {
-  border: .5px solid rgb(170, 170, 170);
+  /* border: .5px solid rgb(170, 170, 170); */
+  background-color: rgb(215, 227, 237);
 }
 
 .add-resource-group {
@@ -302,45 +351,59 @@ body {
 #duckFloat {
   position: absolute;
   left: 117%;
-  bottom: -70%;
-    width: 200px;
-    height: 200px;
-    border: solid;
-    text-align: center;
-    border-radius: 50%;
-    background-color: black;
+  bottom: -500%;
+  width: 200px;
+  height: 200px;
+  border: none;
+  text-align: center;
+  border-radius: 50%;
+  background-color: rgb(33, 71, 104);
   animation-name: clickHere;
   animation-duration: 2.8s;
-  }
-  @keyframes clickHere {
-      0%   { bottom:100%; }
-      100% { bottom:-70%; }
+}
+
+@keyframes clickHere {
+  0% {
+    bottom: 100%;
   }
 
-#sign-in {
-  bottom: -1em;
-  position: relative;
+  100% {
+    bottom: -500%;
+  }
 }
+
+#sign-in {
+  bottom: -2em;
+  position: relative;
+  color: rgb(33, 71, 104);
+  background-color: rgb(215, 227, 237);
+  border: none;
+}
+
 #duckPic {
   height: 106px;
   position: relative;
-  top: 12%;
+  top: 20%;
 }
+
 #landingTitle {
-  left: 98%;
-    position: relative;
-    top: 153%;
-    animation: fadeInFromNone 2.8s ease-in;
+  left: 105%;
+  position: relative;
+  top: 650%;
+  animation: fadeInFromNone 2.8s ease-in;
 }
+
 @keyframes fadeInFromNone {
-    0% {
-        opacity: 0;
-    }
-100% { 
+  0% {
+    opacity: 0;
+  }
+
+  100% {
     opacity: 100%;
 
+  }
 }
-}
+
 /* OOOOOOO SIGN IN STYLES END 00000000*/
 
 /* NEW STYLES ABOVE */

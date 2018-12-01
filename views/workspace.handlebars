@@ -88,7 +88,8 @@
 
           <div class="input-group-prepend">
             <button id="add-topic-button" class="btn btn-outline-secondary btn-sm" type="button">
-              <i class="fas fa-book"></i>
+              {{!-- <i class="fas fa-book"></i> --}}
+              <i class="fas fa-plus"></i>
             </button>
           </div>
 
@@ -96,7 +97,8 @@
 
           <div class='input-group-append'>
             <button id="open-all-topics" class='btn btn-sm btn-secondary toggle-all-resources' type='button' data-topic='{{id}}'>
-              <i class="fas fa-book-open"></i>
+              {{!-- <i class="fas fa-book-open"></i> --}}
+              <i class="fas fa-angle-down"></i>
             </button>
           </div>
 
@@ -125,7 +127,8 @@
 
                 <div class='input-group-append'>
                   <button class='btn btn-sm btn-danger toggle-topic-resources' type='button' data-topic='{{id}}'>
-                    <i class="fas fa-folder-open"></i>
+                    {{!-- <i class="fas fa-folder-open"></i> --}}
+                    <i class="fas fa-angle-down"></i>
                   </button>
                 </div>
 
@@ -136,7 +139,8 @@
               <div class='add-resource-group input-group mb-1'>
                 <div class='input-group-prepend'>
                   <button class='btn btn-sm btn-outline-secondary add-resource' type='button' data-topic='{{id}}'>
-                    <i class="fas fa-bookmark"></i>
+                    {{!-- <i class="fas fa-bookmark"></i> --}}
+                    <i class="fas fa-plus"></i>
                   </button>
                 </div>
                 <input id='add-resource-name-{{id}}' type='text' class='add-resource-input form-control  form-control-sm'
@@ -163,7 +167,8 @@
 
                     <div class='input-group-append'>
                       <button class='btn btn-sm btn-primary toggle-resource' type='button' data-resource='{{id}}'>
-                        <i class="fas fa-pencil-alt"></i>
+                        {{!-- <i class="fas fa-pencil-alt"></i> --}}
+                        <i class="fas fa-angle-down"></i>
                       </button>
                     </div>
 

@@ -89,18 +89,23 @@ function getUserProjects(userId) {
     for (i = 0; i < result.length; i++) {
       var projectUrl = result[i].id
       $(".projects").append(`
-      <div class="col-md-4">
-        <div class="card">
-          <div class="card-body text-center">
-            <h3 class="card-title text-center">${result[i].projectName}</h3>
-            <p class="card-text text-center">Click the button below to visit this project</p>
-            <a href="/${projectUrl}" class="btn btn-primary text-center">Open</a>
-          </div>
-        </div>
+      <div class='project-edit-group input-group mb-1'>
+      <div class='input-group-prepend'>
+        <button class='btn btn-sm btn-outline-danger delete-project' type='button'  data-project='${result[i].id}'>
+          <i class="fas fa-times"></i>
+        </button>
       </div>
+      <input type='text' class='pname form-control form-control-sm' placeholder='${result[i].projectName}' data-project='${result[i].id}'>
+      <div class='input-group-append'>
+      <a href="/${projectUrl}">
+      <button class='btn btn-sm btn-danger goto-project' type='button'>
+      <i class="fas fa-angle-right"></i>
+      </button>
+        </a>
+      </div>
+    </div>
       `)
     }
-
   });
 }
 
@@ -146,3 +151,77 @@ $("#createNewProjectButton").click(function (event) {
   postNewProject(username);
   location.reload(true);
 });
+
+// ==========================================================
+
+// event listener for clicking on a Project Name input to edit projectName
+// works with updateProjecteName event hander
+$(document).on("focus", ".pname", editProjectName);
+
+
+// called by clicking into the input field of a Project Name .pname
+// works with updateProjecteName() on blur
+function editProjectName() {
+  // create a variable with value of element's placeholder="" content
+  var projectNamePlaceholder = $(this).attr('placeholder');
+  // then make the value="" (the input text of textarea) the placeholder content
+  $(this).val(projectNamePlaceholder);
+}
+
+// +++++++++++
+
+// event listener for clickout out of a Project Name input
+// works with editProjectName event handler
+$(document).on("blur", ".pname", updateProjecteName);
+
+
+// called by clicking out of the input field of a Project Name .pname
+// works with editProjectName() on focus
+function updateProjecteName() {
+
+  var projectID = $(this).attr('data-project');
+  // console.log(resourceID);
+
+  var newProjectName = $(this).val().trim();
+  // console.log(newResourceName);
+
+  var putProjectName = {
+    projectName: newProjectName
+  };
+
+  // PUT to wsApiRoutes /api/resource-name/:id
+  $.ajax("/api/project-name/" + projectID, {
+    type: "PUT",
+    data: putProjectName
+  }).then(function (result) {
+    // console.log(result);
+    location.reload();
+  });
+}
+
+
+// ==========================================================
+
+// event listener for the Delete Resource "x" button
+$(document).on("click", ".delete-project", deleteProject);
+
+
+// called by the .delete-resource buttons event handler
+function deleteProject() {
+
+  var confirmDelete = confirm("Are you sure you want to delete this Project?");
+
+  if (confirmDelete == true) {
+
+    var thisProjectID = $(this).attr('data-project');
+    // console.log(thisResourceID);
+
+    // DELETE to wsApiRoutes /api/resources/:id
+    $.ajax("/api/projects/" + thisProjectID, {
+      type: "DELETE"
+    }).then(
+      function (result) {
+        location.reload(true);
+      });
+  }
+}

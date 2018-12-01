@@ -49,7 +49,8 @@ $(document).ready(function () {
       // console.log(userInfo.userName);
       // console.log(userInfo.id);
       // insert the User's userName and id in the header info
-      $("#u-name").text(userInfo.userName + " (" + userInfo.id + ")");
+      // $("#u-name").text(userInfo.userName + " (" + userInfo.id + ")");
+      $("#u-name").text(userInfo.userName);
     });
   };
 
