@@ -1,5 +1,5 @@
 # take.note
-### A research project note organizer and composer
+### A project document note organizer and composer
 
 *MVC with MySQL, Node, Express, Handlebars, Sequelize and Quill.js word processor.*
 
@@ -9,7 +9,7 @@ _________________________________________________
 
 _________________________________________________
 
-### take.note is a Project-based note organizer web app. 
+### take.note is a project-based note organizer web app with multiple user accounts. 
 
 An MVC-structured responsive web app, take.note utilizes a MySQL database accessed with the Sequelize ORM, Handlebars for data-based page templating, and Bootstrap front-end elements modified with custom CSS. The web-based Quill.js word processor allows the main document of each Project numerous formatting options.
 
