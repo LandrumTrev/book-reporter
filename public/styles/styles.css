@@ -389,6 +389,7 @@ body {
   animation: fadeInFromNone 2.8s ease-in;
 }
 
+
 @keyframes fadeInFromNone {
   0% {
     opacity: 0;
