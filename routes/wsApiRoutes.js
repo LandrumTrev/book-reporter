@@ -27,9 +27,10 @@
 // PUT change name of a resource - DONE
 // PUT updated projectContent Quill editor text to db - DONE
 
-
+// require all table data from db as ORM Sequelize models
 var db = require("../models");
 
+// export routes for import by server.js, used by Express
 module.exports = function (app) {
 
   // GET ROUTES
