@@ -19,7 +19,7 @@ body {
   background-color: rgb(215, 227, 237);
 }
 
-/* PRE-EXISTING STYLES ABOVE */
+/* BODY STYLES ABOVE */
 /* =================== */
 /* HEADER BAR STYLES BELOW */
 
@@ -211,13 +211,13 @@ body {
 /* =================== */
 
 #add-topic-button {
-  color: rgb(33, 71, 104);
-  background-color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
+  background-color: rgb(121, 143, 162);
 }
 
 #add-topic-button:hover {
-  color: rgb(255, 255, 255);
-  background-color: rgb(33, 71, 104);
+  color: rgb(33, 71, 104);
+  background-color: rgb(255, 255, 255);
 }
 
 #open-all-topics {
@@ -319,13 +319,9 @@ body {
   box-shadow: 3px 3px 8px rgb(205, 211, 216);
 }
 
-/* =================== */
-
 /* LIST STYLES ABOVE */
 /* =================== */
-
-/* OOOOOOO WORDPROCESSOR STYLES START 00000000*/
-
+/* WORD PROCESSOR STYLES BELOW */
 
 .ql-toolbar {
   background-color: rgb(183, 201, 216);
@@ -343,11 +339,10 @@ body {
   box-shadow: 3px 3px 18px rgb(205, 211, 216);
 }
 
-/* OOOOOOO WORDPROCESSOR STYLES END 00000000*/
-
+/* WORD PROCESSOR STYLES ABOVE */
 /* =================== */
+/* SPLASH PAGE STYLES BELOW */
 
-/* OOOOOOO SIGN IN STYLES START 00000000*/
 #duckFloat {
   position: absolute;
   left: 117%;
@@ -375,7 +370,8 @@ body {
 #sign-in {
   bottom: -2em;
   position: relative;
-  color: rgb(33, 71, 104);
+  color: rgb(172, 33, 33);
+  font-weight: 900;
   background-color: rgb(215, 227, 237);
   border: none;
 }
@@ -404,12 +400,17 @@ body {
   }
 }
 
-/* OOOOOOO SIGN IN STYLES END 00000000*/
-
-/* NEW STYLES ABOVE */
+/* SPLASH PAGE STYLES ABOVE */
 /* =================== */
-/* MEDIA QUERIES BELOW */
+/* MODAL BOX STYLES BELOW */
 
+.modal-box {
+  color: rgb(33, 71, 104);
+  background-color: rgb(215, 227, 237);
+}
+
+/* MODAL BOX STYLES ABOVE */
+/* =================================== */
 /* MEDIA QUERIES FOR BREAKPOINTS BELOW */
 /* =================================== */
 

@@ -59,16 +59,21 @@ function signIn() {
     getUserId(username);
   }
 }
-// Opens the sign in modle and clears the landing page buisness
+
+
+// Opens the sign in modal and clears the landing page buisness
 $("#sign-in").click(function (event) {
   $("#landingTitle").css("display", "none");
   $("#duckFloat").css("display", "none");
-})
+});
+
+
 //Sign out click event
 $("#sign-out").click(function (event) {
   localStorage.removeItem("username", username);
   location.reload(true);
 });
+
 
 function getUserId(username) {
   $.ajax({
@@ -79,6 +84,7 @@ function getUserId(username) {
     getUserProjects(result.id);
   });
 }
+
 
 function getUserProjects(userId) {
   $.ajax({
