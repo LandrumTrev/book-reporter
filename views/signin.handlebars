@@ -13,55 +13,56 @@
 
 {{!-- START MODAL GROUP (Bootstrap ROW and COL) --}}
 <div class="container">
-<div class="row">
-  <div class="col-lg-4">
+  <div class="row">
+    <div class="col-lg-4">
 
-    {{!-- START FLOATING DUCK SIGNIN BUTTON GROUP --}}
-    {{!-- take.note FADE-IN TYPOGRAPHY --}}
-    <img id="landingTitle" src="images/takeNoteText.svg" alt="take note">
-    {{!-- SIGNIN BUTTON AND DUCK BUBBLE --}}
-    <div id="duckFloat">
-      <img id="duckPic" src="images/duck-blue.svg" alt="">
-      <button type="button" class="btn btn-warning btn-sm" id="sign-in" data-toggle="modal" data-target="#exampleModal">
-        get quackin!
-      </button>
-    </div>
-    {{!-- END FLOATING DUCK SIGNIN BUTTON GROUP --}}
+      {{!-- START FLOATING DUCK SIGNIN BUTTON GROUP --}}
+      {{!-- take.note FADE-IN TYPOGRAPHY --}}
+      <img id="landingTitle" src="images/takeNoteText.svg" alt="take note">
+      {{!-- SIGNIN BUTTON AND DUCK BUBBLE --}}
+      <div id="duckFloat">
+        <img id="duckPic" src="images/duck-blue.svg" alt="">
+        <button type="button" class="btn btn-warning btn-sm" id="sign-in" data-toggle="modal" data-target="#exampleModal">
+          get quackin!
+        </button>
+      </div>
+      {{!-- END FLOATING DUCK SIGNIN BUTTON GROUP --}}
 
-    {{!-- START MODAL POPUP --}}
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="exampleModalLabel">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content modal-box">
+      {{!-- START MODAL POPUP --}}
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content modal-box">
 
-          {{!-- MODAL HEADER --}}
-          <div class="modal-header">
-            <h5 class="modal-title text-center" id="exampleModalLabel">Hi! Please enter your username:</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+            {{!-- MODAL HEADER --}}
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Hi! Please enter your username:</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            {{!-- MODAL BODY --}}
+            <div class="modal-body">
+              <form>
+                <div class="col-12">
+                  <input type="text" class="form-control" id="userNameFirst" placeholder="username (no spaces)" value=""
+                    required>
+                </div>
+              </form>
+            </div>
+
+            {{!-- MODAL FOOTER --}}
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal" id="log-in">Sign In</button>
+            </div>
+
           </div>
-
-          {{!-- MODAL BODY --}}
-          <div class="modal-body">
-            <form>
-              <div class="col-12">
-                <input type="text" class="form-control" id="userNameFirst" placeholder="username (no spaces)" value="" required>
-              </div>
-            </form>
-          </div>
-
-          {{!-- MODAL FOOTER --}}
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-dismiss="modal" id="log-in" >Sign In</button>
-          </div>
-
         </div>
       </div>
-    </div>
-    {{!-- END MODAL POPUP --}}
+      {{!-- END MODAL POPUP --}}
 
+    </div>
   </div>
-</div>
 </div>
 {{!-- END MODAL GROUP (Bootstrap ROW and COL) --}}
 
