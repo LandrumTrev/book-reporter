@@ -41,7 +41,7 @@ __sign out__
 *click the "sign out" button in the top right header menu*   
 
 __create a new Project__    
-*after you log in, you will be taken to your Projects list page*   
+*after you log in, you will be taken to your Projects LIST page*   
 To create a new Project, enter a Project name in the "create a new Project" field and click the book icon button. Spaces allowed in Project, Topic, and Resource names; just not in Usernames.   
 
 __delete a Project__    
@@ -49,14 +49,14 @@ __delete a Project__
 Currently there is no feature to allow transfer of Topics and/or Resources to other Projects; this feature is planned for inclusion in future versions.   
 
 __edit a Project__    
-*click on the > button to the right of your Project name to go to your Project's workspace*   
-To create a new Project, enter a Project name in the "create a new Project" field and click the book icon button. Spaces allowed in Project, Topic, and Resource names; just not in Usernames.   
+*click on the > button to the right of your Project name to go to your Project's WORKSPACE:*   
+   
 _________________________________________________     
 
 #### Projects WORKSPACE 
 
 __Project editor__    
-*use the Project editor window with word processor formatting options to compose your book, paper, report, or other type of Project*   
+*use the Project editor window with word processor to compose your book, paper, report, or other Project*   
 Your Project will be auto-saved anytime you click outside the Project editor window; no need to click a "save" button. Click on the "editor" button in the menu to show/hide the editor if you want to view the Topics and Resources list full screen.   
 
 __Topics and Resources list__    
@@ -65,7 +65,7 @@ You can edit the names of your Topics and Resources at any time--just edit the n
 
 __add a new Topic__    
 *Topics are organizational groups for related Resources*   
-Add a new Topic by entering a Topic name in the "add a new Topic to this Project" area at the top of the list, and click the + button to add the Topic to your list. Also, you can toggle open and closed all Topics in your Project with the down arrow button to the right the "add a new Topic to this Project" field.
+Add a new Topic by entering a Topic name in the "add a new Topic to this Project" area at the top of the list, and click the + button to add the Topic to your list. Also, you can toggle open and closed all Topics' Resource Content areas in your Project with the down arrow button to the right the "add a new Topic to this Project" field.
 
 __edit a Topic__    
 *rename a Topic, delete a Topic, toggle open/closed all Topic Resource's Content areas*   
