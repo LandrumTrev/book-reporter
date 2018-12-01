@@ -78,6 +78,7 @@ _________________________________________________
 ###### ©2018 Nicholas Angelo Batten, Ryan Case, Melissa Derricott, Alex Silvester, Richard Trevillian
 ###### University of Richmond (Virginia)
 ###### Full Stack Developer Bootcamp (July 2018)
+###### 2018-11-30
 
 
 
