@@ -231,3 +231,11 @@ function deleteProject() {
       });
   }
 }
+
+// ==========================================================
+
+// event listener for reloading the browser if you close the modal
+
+$('#exampleModal').on('hidden.bs.modal', function () {
+  location.reload(true);
+})
