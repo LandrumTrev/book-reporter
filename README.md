@@ -1,5 +1,5 @@
 # take.note
-#### A research project note organizer and composer
+### A research project note organizer and composer
 
 *MVC with MySQL, Node, Express, Handlebars, Sequelize and Quill.js word processor.*
 
@@ -29,39 +29,39 @@ _________________________________________________
 
 #### PROJECTS LIST 
 
-__sign in__ 
-*click the "get quacken!" button to login to your Projects*
-If your username does not already exist in the database, a new user account will be created for you. Do not include spaces in your username.
+__sign in__    
+*click the "get quacken!" button to login to your Projects*    
+If your username does not already exist in the database, a new user account will be created for you. Do not include spaces in your username.   
 
-__sign out__ 
-*click the "sign out" button in the top right header menu*
+__sign out__    
+*click the "sign out" button in the top right header menu*   
 
-__create a new project__ 
-*after you log in, you will be taken to your projects list page*
-To create a new project, enter a Project name in the "create a new project" field and click the book icon button. Spaces allowed in Project, Topic, and Resource names; just not in Usernames.
+__create a new project__    
+*after you log in, you will be taken to your projects list page*   
+To create a new project, enter a Project name in the "create a new project" field and click the book icon button. Spaces allowed in Project, Topic, and Resource names; just not in Usernames.   
 
-__delete a project__ 
-*click on the X button to the left of your project name to delete a Project and all it's Topics and Resources*
-Currently there is no feature to allow transfer of Topics and/or Resources to other Projects; this feature is planned for inclusion in future versions.
+__delete a project__    
+*click on the X button to the left of your project name to delete a Project and all it's Topics and Resources*   
+Currently there is no feature to allow transfer of Topics and/or Resources to other Projects; this feature is planned for inclusion in future versions.   
 
-__edit a project__ 
-*click on the > button to the right of your project name to go to your project's workspace*
-To create a new project, enter a Project name in the "create a new project" field and click the book icon button. Spaces allowed in Project, Topic, and Resource names; just not in Usernames.
+__edit a project__    
+*click on the > button to the right of your project name to go to your project's workspace*   
+To create a new project, enter a Project name in the "create a new project" field and click the book icon button. Spaces allowed in Project, Topic, and Resource names; just not in Usernames.   
 
 
 #### PROJECTS WORKSPACE 
 
-__project editor__ 
-*use the project editor window with word processor formatting options to compose your book, paper, report, or other type of project*
-Your project will be auto-saved anytime you click outside the project editor window; no need to click a "save" button. Click on the "editor" button in the menu to show/hide the editor if you want to view the topics and resources list full screen.
+__project editor__    
+*use the project editor window with word processor formatting options to compose your book, paper, report, or other type of project*   
+Your project will be auto-saved anytime you click outside the project editor window; no need to click a "save" button. Click on the "editor" button in the menu to show/hide the editor if you want to view the topics and resources list full screen.   
 
-__topics and resources list__ 
-*use the project editor window with word processor formatting options to compose your book, paper, report, or other type of project*
-Your project will be auto-saved anytime you click outside the project editor window; no need to click a "save" button. Click on the "list" button in the menu to show/hide the topics and resources list if you want to view the project editor window full screen.
+__topics and resources list__    
+*use the project editor window with word processor formatting options to compose your book, paper, report, or other type of project*   
+Your project will be auto-saved anytime you click outside the project editor window; no need to click a "save" button. Click on the "list" button in the menu to show/hide the topics and resources list if you want to view the project editor window full screen.   
 
-__topics and resources list__ 
-*use the project editor window with word processor formatting options to compose your book, paper, report, or other type of project*
-Your project will be auto-saved anytime you click outside the project editor window; no need to click a "save" button. Click on the "list" button in the menu to show/hide the topics and resources list if you want to view the project editor window full screen.
+__topics and resources list__    
+*use the project editor window with word processor formatting options to compose your book, paper, report, or other type of project*   
+Your project will be auto-saved anytime you click outside the project editor window; no need to click a "save" button. Click on the "list" button in the menu to show/hide the topics and resources list if you want to view the project editor window full screen.   
 
 _________________________________________________
 
