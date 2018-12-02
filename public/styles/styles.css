@@ -345,8 +345,8 @@ body {
 
 #duckFloat {
   position: absolute;
-  left: 117%;
-  bottom: -500%;
+  left: 39%;
+  bottom: -109%;
   width: 200px;
   height: 200px;
   border: none;
@@ -363,7 +363,7 @@ body {
   }
 
   100% {
-    bottom: -500%;
+    bottom: -109%;
   }
 }
 
@@ -383,9 +383,9 @@ body {
 }
 
 #landingTitle {
-  left: 105%;
-  position: relative;
-  top: 650%;
+  left: 2%;
+    position: relative;
+    top: 199%;
   animation: fadeInFromNone 2.8s ease-in;
 }
 
@@ -415,26 +415,96 @@ body {
 /* MEDIA QUERIES FOR BREAKPOINTS BELOW */
 /* =================================== */
 
+/* Medium devices (landscape tablets, up to 768px) */
+@media only screen and (max-width: 768px) {
+  body {
+    /* background-color: #fff; */
+  }
+  #landingTitle {
+    top: 270px;
+  }
+#duckFloat {
+  position: absolute;
+  left: 39%;
+  bottom: -174%;
+  width: 200px;
+  height: 200px;
+  border: none;
+  text-align: center;
+  border-radius: 50%;
+  background-color: rgb(33, 71, 104);
+  animation-name: clickHere;
+  animation-duration: 2.8s;
+}
+
+@keyframes clickHere {
+  0% {
+    bottom: 100%;
+  }
+
+  100% {
+    bottom: -174%;
+  }
+}
+}
+/* Small devices (portrait tablets and large phones, up to 576px) */
+@media only screen and (max-width: 576px) {
+  body {
+    /* background-color: aliceblue; */
+  }
+  #duckFloat {
+    position: absolute;
+    left: 24%;
+    bottom: -292%;
+    width: 200px;
+    height: 200px;
+    border: none;
+    text-align: center;
+    border-radius: 50%;
+    background-color: rgb(33, 71, 104);
+    animation-name: clickHere;
+    animation-duration: 2.8s;
+  }
+  
+  @keyframes clickHere {
+    0% {
+      bottom: 100%;
+    }
+  
+    100% {
+      bottom: -292%;
+    }
+  }
+}
 /* Extra small devices (phones, 575px and down) */
 @media only screen and (max-width: 575px) {
   body {
     /* background-color: #fff; */
   }
-}
-
-/* Small devices (portrait tablets and large phones, 576px and up) */
-@media only screen and (min-width: 576px) {
-  body {
-    /* background-color: aliceblue; */
+  #duckFloat {
+    position: absolute;
+    left: 27%;
+    bottom: -221%;
+    width: 200px;
+    height: 200px;
+    border: none;
+    text-align: center;
+    border-radius: 50%;
+    background-color: rgb(33, 71, 104);
+    animation-name: clickHere;
+    animation-duration: 2.8s;
   }
-}
-
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
-  body {
-    /* background-color: #fff; */
+  
+  @keyframes clickHere {
+    0% {
+      bottom: 100%;
+    }
+  
+    100% {
+      bottom: -221%;
+    }
   }
-}
+  }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
